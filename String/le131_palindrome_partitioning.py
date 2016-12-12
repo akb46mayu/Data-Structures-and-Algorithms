@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: List[List[str]]
         """
     
-        result =[]
+        result = []
         self.partitionRecur(result, [], s, 0)
         return result
     def partitionRecur(self, result, cur, s, i):
@@ -19,9 +19,7 @@ class Solution(object):
                     cur.append(s[i:j+1])
                     self.partitionRecur(result, cur, s, j+1)
                     cur.pop()
-    
-    
-    
+     
     def isPalindrome(self, s):
         for i in xrange(len(s)/2):
             if s[i]!=s[-i-1]:
