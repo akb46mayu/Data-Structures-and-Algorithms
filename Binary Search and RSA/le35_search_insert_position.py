@@ -1,4 +1,4 @@
-class Solution(object): # method 1
+class Solution(object): # method 1, Nine chapter's sol
     def searchInsert(self, nums, target):
         """
         :type nums: List[int]
@@ -31,8 +31,7 @@ class Solution2(object):
         while start <= end:
             mid = (start + end)/2
             if nums[mid] >= target:
-                end = mid - 1
-                
+                end = mid - 1                
             else:
                 start = mid + 1
         return start
