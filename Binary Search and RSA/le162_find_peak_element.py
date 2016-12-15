@@ -1,4 +1,4 @@
-class Solution(object): # I prefer to this solution
+class Solution(object): # I prefer to this solution (no duplicates)
     def findPeakElement(self, nums):
         """
         :type nums: List[int]
