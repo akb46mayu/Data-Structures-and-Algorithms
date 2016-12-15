@@ -3,6 +3,7 @@
 # @return a bool
 # def isBadVersion(version):
 
+# no corner case when n = 0
 class Solution(object):
     def firstBadVersion(self, n):
         """
