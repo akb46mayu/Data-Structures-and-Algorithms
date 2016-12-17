@@ -27,6 +27,5 @@ class Solution2(object):  # template...
             elif nums[mid] < nums[end]:
                 end = mid
             else:
-                start = mid
-        
+                start = mid       
         return min(nums[start], nums[end])
