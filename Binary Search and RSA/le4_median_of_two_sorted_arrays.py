@@ -24,6 +24,6 @@ class Solution(object):
         a = nums1[k/2-1] if len(nums1)>=k/2 else None
         b = nums2[k/2-1] if len(nums2)>=k/2 else None
         
-        if b is None or (a<b and a is not None):
+        if b is None or (a<b and a is not None):   # a<=b is also ok. a is not None 
             return self.findKthElement(nums1[k/2:], nums2, k-k/2)
         return self.findKthElement(nums1, nums2[k/2:], k-k/2)
