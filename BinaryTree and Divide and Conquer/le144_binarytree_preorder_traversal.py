@@ -10,14 +10,12 @@ class Solution(object):
         """ 
         :type root: TreeNode
         :rtype: List[int]
-        """
-        
+        """   
         results = []
         self.subPreorderTraversal(root, results)
         return results
     
-    def subPreorderTraversal(self, root, results):
-        
+    def subPreorderTraversal(self, root, results):       
         if root is None:
             return 
         results.append(root.val)
