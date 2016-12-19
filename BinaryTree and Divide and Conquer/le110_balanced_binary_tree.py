@@ -24,3 +24,25 @@ class Solution(object):
         if k > 1:
             result[0] = False
         return max(a1,a2) + 1
+    
+class Solution2(object):
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        isBalanced, valof = self.isNodeBalanced(root)
+        return isBalanced
+        
+    def isNodeBalanced(self, root):
+        if root is None:
+            return True, 0
+        
+        isBalanced, leftval = self.isNodeBalanced(root.left)
+        if not isBalanced:
+            return False, 0
+        isBalanced, rightval = self.isNodeBalanced(root.right)
+        if not isBalanced:
+            return False, 0
+        return abs(leftval - rightval)<=1, max(leftval, rightval) + 1
+        
