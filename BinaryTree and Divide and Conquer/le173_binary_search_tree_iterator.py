@@ -14,6 +14,8 @@ Note: next() and hasNext() should run in average O(1) time and uses O(h) memory,
 #         self.left = None
 #         self.right = None
 
+# O(1) time: pop implementation
+# O(h) height: stack only includes roughly h elements
 class BSTIterator(object):
     def __init__(self, root):
         """
