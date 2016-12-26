@@ -29,10 +29,10 @@ class Solution(object):
         while head:
             if head.val < x:
                 left.next = head
-                left = head
+                left = head # or left = left.next
             else:
                 right.next = head
-                right = head
+                right = head # or right = right.next
             head = head.next
         left.next = rightDummy.next
         right.next = None
