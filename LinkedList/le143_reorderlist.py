@@ -24,7 +24,7 @@ class Solution(object):
                     return 
                 
         fast = slow = head
-        while fast.next and fast.next.next: # find the middle node and sperate input into two lists
+        while fast.next and fast.next.next: # find the middle node and sperate input into two lists (1st list's len is >= 2nd list)
             fast = fast.next.next
             slow = slow.next
         head2 = slow.next
@@ -37,7 +37,8 @@ class Solution(object):
             cur.next = prev
             prev = cur
         head2 = prev
-        h1, h2 = head, head2
+        
+        h1, h2 = head, head2 # combine the two lists (template should be remembered)
         while h2:
             tmp1, tmp2 = h1.next, h2.next
             h1.next = h2
