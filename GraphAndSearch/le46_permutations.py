@@ -13,17 +13,15 @@ For example,
 ]
 """
 
-
-
-class Solution(object):
+class Solution(object): # use DFS implemented by recursion
     def permute(self, nums):
         """
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        if nums is None:
+        if nums is None:  # this is not needed for passing OJ
             return []
-        results = []
+        results = [] 
         self.permuteHelper(results, [], nums)
         return results
     
