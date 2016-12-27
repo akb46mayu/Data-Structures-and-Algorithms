@@ -42,7 +42,6 @@ class Solution(object):
                 result.append(''.join(a))
             results.append(result)
         else:   
-        
             for col in range(n):
                 if col in cols:
                     continue
