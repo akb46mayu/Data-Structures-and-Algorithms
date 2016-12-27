@@ -1,7 +1,6 @@
 """
 Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
 
-
 OJ's undirected graph serialization:
 Nodes are labeled uniquely.
 
@@ -32,6 +31,9 @@ Visually, the graph looks like the following:
 class Solution:
     # @param node, a undirected graph node
     # @return a undirected graph node
+    # q: use this to implement BFS, pop order does not matter (like a stack in fact)
+    # cloned: a hash map(dict) which records the mapping btw old and new nodes; prevent copying the same nodes
+    # when copying the neighbors of a node, remember it should copy the new nodes as the nbs not the old ones
     def cloneGraph(self, node):
         if node is None:
             return None
