@@ -49,7 +49,7 @@ class Solution(object):
             cur = next
         
         if found:
-            self.backTrack(trace, endWord,  [], results)
+            self.backTrack(trace, endWord, [], results)
         return results
          
     def backTrack(self, trace, word, path, results):
