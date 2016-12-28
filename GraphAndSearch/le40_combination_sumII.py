@@ -55,7 +55,7 @@ class Solution2(object):
     
     def sumHelper(self, candidates, target, start, candList, use, results):
         if target == 0:
-            results.append(list(candList))
+            results.append(list(candList)) # or use append(candList[:])
             return
         
         for i in range(start, len(candidates)):
