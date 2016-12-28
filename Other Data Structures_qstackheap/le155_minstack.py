@@ -31,7 +31,6 @@ class MinStack(object):
         self.minStack = []
         self.stack = []
         
-
     def push(self, x):
         """
         :type x: int
@@ -46,8 +45,7 @@ class MinStack(object):
                 self.minStack.append(self.minStack[-1])
         else:
             self.minStack.append(x)
-            
-            
+                       
     def pop(self):
         """
         :rtype: void
@@ -76,7 +74,6 @@ class MinStack2(object):
         self.stack = []
         self.minStack = []
         
-
     def push(self, x):
         """
         :type x: int
@@ -99,7 +96,6 @@ class MinStack2(object):
         """
         :rtype: int
         """
-
         return self.stack[-1]
 
     def getMin(self):
