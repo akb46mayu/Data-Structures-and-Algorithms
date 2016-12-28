@@ -30,7 +30,7 @@ class Solution(object):
         return results
         
     def sumHelper(self, candidates, target, start, candList, results):
-        if target == 0 and candList not in results:
+        if target == 0 and candList not in results: # dupliations
             results.append(candList)
             return
         else:
