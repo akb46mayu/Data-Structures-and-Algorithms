@@ -85,7 +85,7 @@ class Solution3(object):
     
     def DFS(self, candidates, target, start, candList, use):
         if target == 0:
-            Solution.out.append(candList)  # do not know why use[:]
+            Solution.out.append(candList)  #
             return
         for i in range(start, len(candidates)):
             if target < candidates[i]:
