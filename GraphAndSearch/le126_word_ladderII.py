@@ -33,7 +33,7 @@ class Solution(object):
         cur = [beginWord]
         found = False
         results = []
-        while cur and not found:
+        while cur and not found:  # can not direcly used the template from I
             next = set()
             for word in cur:
                 visited.add(word)
