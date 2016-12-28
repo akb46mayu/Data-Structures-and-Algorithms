@@ -77,10 +77,7 @@ class Solution3(object):
         """
         Solution.out = []
         start = 0
-        
-        
-        candidates.sort()
-      
+        candidates.sort()      
         use = [0]*len(candidates)
         candList = []
         self.DFS(candidates, target, start, candList, use)
