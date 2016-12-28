@@ -39,3 +39,31 @@ class Solution(object):
                     return
                 self.sumHelper(candidates, target - candidates[i], i+1, candList+[candidates[i]], results)
                 
+class Solution2(object):
+    def combinationSum2(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        candidates.sort()
+        candList = []
+        results = []
+        use = [0]*len(candidates)
+        self.sumHelper(candidates, target, 0, candList, use, results)
+        return results
+    
+    def sumHelper(self, candidates, target, start, candList, use, results):
+        if target == 0:
+            results.append(list(candList))
+            return
+        
+        for i in range(start, len(candidates)):
+            if target < candidates[i]:
+                return 
+            if i == 0 or candidates[i-1]!= candidates[i] or use[i-1]==1:
+                use[i] = 1
+                candList+=[candidates[i]]
+                self.sumHelper(candidates, target-candidates[i], i+1, candList, use, results)
+                candList.pop()
+                use[i] = 0
