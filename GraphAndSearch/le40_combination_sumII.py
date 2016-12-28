@@ -67,3 +67,33 @@ class Solution2(object):
                 self.sumHelper(candidates, target-candidates[i], i+1, candList, use, results)
                 candList.pop()
                 use[i] = 0
+                
+class Solution3(object):
+    def combinationSum2(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        Solution.out = []
+        start = 0
+        
+        
+        candidates.sort()
+      
+        use = [0]*len(candidates)
+        candList = []
+        self.DFS(candidates, target, start, candList, use)
+        return Solution.out
+    
+    def DFS(self, candidates, target, start, candList, use):
+        if target == 0:
+            Solution.out.append(candList)  # do not know why use[:]
+            return
+        for i in range(start, len(candidates)):
+            if target < candidates[i]:
+                return 
+            if i==0 or candidates[i]!=candidates[i-1] or use[i-1]==1:
+                use[i] = 1
+                self.DFS(candidates, target - candidates[i], i+1, candList+[candidates[i]], use)
+                use[i] = 0
