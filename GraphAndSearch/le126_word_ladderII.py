@@ -15,7 +15,7 @@ Return
     ["hit","hot","lot","log","cog"]
   ]
 """
-
+# hard question, using set, list, dict, dfs and bfs
 
 class Solution(object):
     def findLadders(self, beginWord, endWord, wordlist):
