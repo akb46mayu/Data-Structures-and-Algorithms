@@ -22,7 +22,7 @@ class Solution(object): # use recursion
         self.subPreorderTraversal(root.left, results)
         self.subPreorderTraversal(root.right, results)
         
-class Solution2(object): # use iteration
+class Solution2(object): # use iteration and stack
     def preorderTraversal(self, root):
         """
         :type root: TreeNode
