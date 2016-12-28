@@ -22,7 +22,7 @@ minStack.getMin();   --> Returns -2.
 # param_3 = obj.top()
 # param_4 = obj.getMin()
 
-class MinStack(object):
+class MinStack(object):  # do not save space 
 
     def __init__(self):
         """
@@ -36,8 +36,7 @@ class MinStack(object):
         :type x: int
         :rtype: void
         """
-        self.stack.append(x)
-        
+        self.stack.append(x)        
         if self.minStack:
             if self.minStack[-1] > x:
                 self.minStack.append(x)
@@ -65,7 +64,7 @@ class MinStack(object):
         """
         return self.minStack[-1]
 
-class MinStack2(object):
+class MinStack2(object):  # save space
 
     def __init__(self):
         """
