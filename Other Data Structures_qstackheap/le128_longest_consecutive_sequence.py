@@ -34,7 +34,7 @@ class Solution(object):
             low = val
         return maxlen
 
-    class Solution2(object):
+class Solution2(object):
     def longestConsecutive(self, nums):
         """
         :type nums: List[int]
