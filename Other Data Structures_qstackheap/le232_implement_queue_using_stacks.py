@@ -34,7 +34,7 @@ class Queue(object):
         self.peek()
         self.s2.pop()
             
-    def peek(self):  # what is intially it is empty and we need to do peek? check this...
+    def peek(self):  # this should be modified, because it does not consider about queue is None (although it passed OJ)
         """
         :rtype: int
         """
