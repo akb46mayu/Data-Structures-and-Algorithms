@@ -21,7 +21,7 @@ class Solution(object):
         area = 0
         n= len(heights)
         stack = []
-        for i in range(n+1):#  for idx i, compute i-1's height according to its leftmose(stack[-1]) and rightmost(i) min pillar
+        for i in range(n+1):#  for idx i, compute i-1's (i-2,i-3 if exists) height according to its leftmose(stack[-1]) and rightmost(i) min pillar
             if i == n:
                 curHeight = -1
             else:
@@ -30,7 +30,7 @@ class Solution(object):
                 h = heights[stack.pop()]
                 if stack:
                     w = i-1-stack[-1]
-                else:
+                else: # when stack is empty, means sequnce is increasing, which does not have the leftmost element.
                     w = i
                 area = max(area, w*h)
             stack.append(i)
