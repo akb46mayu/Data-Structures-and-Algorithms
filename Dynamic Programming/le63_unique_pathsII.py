@@ -40,3 +40,25 @@ class Solution(object):
                 else:
                     f[i][j] = f[i-1][j] + f[i][j-1] if obs[i][j] ==0 else 0
         return f[m-1][n-1]
+
+      
+ class Solution2(object):
+    def uniquePathsWithObstacles(self, obstacleGrid):
+        """
+        :type obstacleGrid: List[List[int]]
+        :rtype: int
+        """
+        m, n = len(obstacleGrid), len(obstacleGrid[0])
+        obs = obstacleGrid
+        for i in range(m):
+            for j in range(n):
+                if i ==0 and j == 0:
+                    obs[0][0] = 1 if obs[0][0]==0 else 0
+                elif i==0:
+                    obs[i][j] = obs[i][j-1] if obs[i][j]==0 else 0
+                elif j==0:
+                    obs[i][j] = obs[i-1][j] if obs[i][j]==0 else 0
+                else:
+                    obs[i][j] = obs[i-1][j] + obs[i][j-1] if obs[i][j] ==0 else 0
+        return obs[m-1][n-1]
+                        
