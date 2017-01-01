@@ -24,3 +24,23 @@ class Solution(object):
             else:
                 f[i] = max(nums[i]+f[i-2], f[i-1])
         return f[n-1]
+
+class Solution2(object):# in place
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+        n = len(nums)
+        if n == 0:
+            return 0
+      
+        for i in range(n):
+            if i==0:
+                nums[i] = nums[i]
+            elif i == 1:
+                nums[i] = max(nums[i], nums[i-1])
+            else:
+                nums[i] = max(nums[i]+nums[i-2], nums[i-1])
+        return nums[n-1]
