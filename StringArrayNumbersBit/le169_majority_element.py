@@ -11,7 +11,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        count = 0
+        count = 0 # number of duplicated element. If one pair is found duplicated, count will be decreased by one
         for x in nums:
             if count == 0:
                 candidate = x
