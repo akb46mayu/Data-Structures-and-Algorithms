@@ -16,7 +16,7 @@ class Solution(object):
         count1, count2 = 0, 0
         cand1, cand2 = None, None
         for x in nums:
-            if cand1 == x:   # you can not put count1==0 at the beggining
+            if cand1 == x:   # you can not put count1==0 at the beggining, because nums[1] might be nums[0], say [8,8,7,7,7]
                 count1 += 1
             elif cand2 == x:
                 count2 += 1
