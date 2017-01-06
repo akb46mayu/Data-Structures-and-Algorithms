@@ -20,3 +20,18 @@ class Solution(object):
         for i in range(2, n+1):
             f[i] = max(f[i-1], prices[i-1] - prices[i-2] + f[i-1])
         return f[n]
+
+    
+class Solution2(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+
+        total = 0
+        for i in range(len(prices)-1):
+            diff = prices[i+1] - prices[i]
+            if diff > 0:
+                total = total + diff
+        return total
