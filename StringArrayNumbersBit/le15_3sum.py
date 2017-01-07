@@ -29,7 +29,7 @@ class Solution(object):
         nums.sort()
         while i < n-2:
             j, k = i+1, n-1
-            if i == 0 or nums[i]!=nums[i-1]:
+            if i == 0 or nums[i]!=nums[i-1]:  # remove the duplicates of nums[i]
                 while j<k:
                     s = nums[i] + nums[j] + nums[k]
                     if s < 0 :
@@ -39,9 +39,9 @@ class Solution(object):
                     else:
                         out.append([nums[i],nums[j],nums[k]])
                         j, k = j +1, k-1
-                        while j<k and nums[j]==nums[j-1]:
+                        while j<k and nums[j]==nums[j-1]:  # remove the duplicates of nums[j]
                                 j +=1
-                        while j<k and nums[k]== nums[k+1]:
+                        while j<k and nums[k]== nums[k+1]: # remove the duplicates of nums[k]
                                 k -=1
                     
             i += 1
