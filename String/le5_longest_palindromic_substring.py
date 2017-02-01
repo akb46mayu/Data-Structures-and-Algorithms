@@ -24,7 +24,7 @@ class Solution(object):
         """
         ansl, ansr, maxval = 0,0,0
         n = len(s)
-        for i in range(1, 2*n - 1):
+        for i in range(1, 2*n):
             if i&1:  # i is odd
                 left = i/2
                 right = left
