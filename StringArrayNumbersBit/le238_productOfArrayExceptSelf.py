@@ -21,11 +21,11 @@ class Solution(object):
         n = len(nums)
         rightPd = [0 for i in range(n+1)]
         out = []
-        rightPd[n] = 1
+        rightPd[n] = 1  # product including i
         for i in xrange(n-1, 0, -1):
             rightPd[i] = rightPd[i+1]*nums[i]
         leftPd = 1
         for i in range(n):
-            out.append(leftPd*rightPd[i+1])
-            leftPd = leftPd*nums[i]
+            out.append(leftPd*rightPd[i+1])  # in leftPd, it does not includ nums[i]
+            leftPd = leftPd*nums[i]  
         return out
