@@ -4,7 +4,7 @@ Reverse digits of an integer.
 Example1: x = 123, return 321
 Example2: x = -123, return -321
 
-
+corner case is the reversed integer will be outof the range of 0x7fffffff (32bits maximum)
 """
 class Solution(object):
     def reverse(self, x):
