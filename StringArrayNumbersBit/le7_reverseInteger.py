@@ -22,9 +22,6 @@ class Solution(object):
              x0 = x0/10
              i += 1
              
-        
         if out > 0x7fffffff:
-            return 0
-        
-        
+            return 0      
         return out if x>0 else -out
