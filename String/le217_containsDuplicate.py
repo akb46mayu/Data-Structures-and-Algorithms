@@ -9,7 +9,7 @@ Show Tags
 Show Similar Problems
 
 """
-
+# It will exceed the time limit when we use the hashmap
 class Solution(object):
     def containsDuplicate(self, nums):
         """
