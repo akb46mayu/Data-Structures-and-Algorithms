@@ -28,10 +28,7 @@ class Solution(object):
                 break
         return n==1
                 
-            
-            
-            
-            
+      
     def nextEle(self, x):
         out = 0
         while x/10 or x%10:
