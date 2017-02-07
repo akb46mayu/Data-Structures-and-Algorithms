@@ -36,7 +36,7 @@ class Solution(object):
         """
         curA, curB, begin = headA, headB, None
         tailA, tailB = None, None
-        while curA and curB:
+        while curA and curB: # if one of them is none, there will not be any intersections
             if curA == curB:
                 begin = curA
                 return begin
