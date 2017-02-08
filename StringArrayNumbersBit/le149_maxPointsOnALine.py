@@ -7,6 +7,9 @@ Given n points on a 2D plane, find the maximum number of points that lie on the 
 #         self.x = a
 #         self.y = b
 
+## Saving the gradients directly will fail the case of [[0,0],[94911151,94911150],[94911152,94911151]]
+# using Fraction command in python will lead to time exceedings. 
+# Only way is to write your own Greatest Common divisor function and save the two
 class Solution(object):
     def maxPoints(self, points):
         """
