@@ -39,3 +39,4 @@ class Solution(object):
         else: # x3>x2
             out = 0
         return out
+# EASIER SOLUTION LOOK the others
