@@ -27,3 +27,20 @@ class Solution(object):
             else:
                 i += 1    
         return len(nums)
+
+class Solution2(object):
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        i, end = 0, len(nums)-1
+        while i <= end:
+        
+            if val == nums[i]:
+                nums[i], nums[end] = nums[end], nums[i]
+                end -= 1
+            else:
+                i += 1
+        return end+1
