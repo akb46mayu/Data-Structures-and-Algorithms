@@ -5,7 +5,7 @@ For example:
 Given n = 13,
 Return 6, because digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
 """
-
+# nice discussion: https://discuss.leetcode.com/topic/18054/4-lines-o-log-n-c-java-python
 class Solution(object):
     def countDigitOne(self, n):
         """
