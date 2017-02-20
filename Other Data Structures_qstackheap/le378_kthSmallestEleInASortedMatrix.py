@@ -35,8 +35,8 @@ class Solution(object):
         push(0,0)
         while k > 0 and myheapq:
             cursmallest, i, j,  = heappop(myheapq)
-            push(i, j+1)
-            if j == 0:
+            push(i, j+1)  # push one element from the poped element's nbh
+            if j == 0: # deal with the 0th column case and nbh case
                 push(i+1, 0)
             k = k - 1
         return cursmallest
