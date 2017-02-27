@@ -16,7 +16,7 @@ A----->B  C
      ->D  E <- F
 Return {A,B,D}, {C,E,F}. Since there are two connected component which are {A,B,D} and {C,E,F}
 """
-
+# main idea is to use union-find
 # Definition for a directed graph node
 # class DirectedGraphNode:
 #     def __init__(self, x):
