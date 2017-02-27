@@ -22,6 +22,8 @@ Return {A,B,D}, {C,E,F}. Since there are two connected component which are {A,B,
 #     def __init__(self, x):
 #         self.label = x
 #         self.neighbors = []
+
+# f is a hash set which saves the nearest node label the current node will point to (not has to be the cur node's father)
 class Solution:
     # @param {DirectedGraphNode[]} nodes a array of directed graph node
     # @return {int[][]} a connected set of a directed graph
