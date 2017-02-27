@@ -38,9 +38,9 @@ class Solution:
         for node in nodes:
             for nb in node.neighbors:
                 self.merge(node.label, nb.label)
-        g = {}
+        g = {} # reflects each connected component's father
         res = []
-        cnt = 0
+        cnt = 0  # idx of the result
         for node in nodes:
             x = self.find(node.label)
             if not x in g.keys():
@@ -50,8 +50,6 @@ class Solution:
             res[g[x]-1].append(node.label) 
         return res
         
-
-    
     def find(self, x):
         if self.f[x] == x:
             return x
