@@ -68,4 +68,4 @@ class Trie(object):
 # obj = Trie()
 # obj.insert(word)
 # param_2 = obj.search(word)
-# param_3 = obj.startsWith(prefix)
+# param_3 = obj.startsWith(prefix) # start with means start from the root to the end of prefix
