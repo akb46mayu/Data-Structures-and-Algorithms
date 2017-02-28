@@ -5,9 +5,6 @@ Note:
 You may assume that all inputs are consist of lowercase letters a-z.
 
 """
-
-
-
 class TrieNode:
     def __init__(self):
         self.childs = {}
