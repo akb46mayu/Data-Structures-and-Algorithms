@@ -30,7 +30,7 @@ You may assume k is always valid, ie: 1 ≤ k ≤ input array's size for non-emp
 
 
 """
-# lazy removal approach
+# lazy removal approach (assume maxheap size <= minheap size)
 from heapq import heappush, heappop
 import collections
 class Solution(object):
