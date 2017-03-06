@@ -30,10 +30,29 @@ You may assume k is always valid, ie: 1 ≤ k ≤ input array's size for non-emp
 
 
 """
+# using bisect and insort
+import bisect
+class Solution(object):
+    def medianSlidingWindow(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[float]
+        """
+        window, out, result = [], [], []
+        for i in range(len(nums)):
+            if i >= k:
+                window.remove(nums[i-k])
+            bisect.insort(window, nums[i])
+            if i >= k-1:
+                out = float(window[k/2-1] + window[k/2])/2.0 if  k%2 == 0  else float(window[k/2])
+                result.append(out)
+        return result
+       
 # lazy removal approach (assume maxheap size <= minheap size)
 from heapq import heappush, heappop
 import collections
-class Solution(object):
+class Solution2(object):
     def medianSlidingWindow(self, nums, k):
         """
         :type nums: List[int]
@@ -108,7 +127,7 @@ class Solution(object):
 
 ## old solution TLE problem
 from heapq import heappush, heappop, heapify
-class Solution2(object):
+class Solution3(object):
     def medianSlidingWindow(self, nums, k):
         """
         :type nums: List[int]
