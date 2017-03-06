@@ -51,6 +51,42 @@ class MedianFinder:
         """
         return (self.minheap[0] - self.maxheap[0])/2.0 if len(self.minheap)==len(self.maxheap) else self.minheap[0]
 
+    
+from heapq import heappush, heappop
+class MedianFinder2(object):
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.maxheap = []
+        self.minheap = []
+        
+
+    def addNum(self, num):
+        """
+        :type num: int
+        :rtype: void
+        """
+        if not self.maxheap or num < -self.maxheap[0]: # be careful of using different conditions. 
+            heappush(self.maxheap, -num)
+            n1, n2 = len(self.maxheap), len(self.minheap)
+            if n1 - n2 > 1:
+                val = -heappop(self.maxheap)
+                heappush(self.minheap, val)
+                
+        else:
+            heappush(self.minheap, num)
+            n1, n2 = len(self.maxheap), len(self.minheap)
+            if n1 < n2:
+                val = heappop(self.minheap)
+                heappush(self.maxheap, -val)
+
+    def findMedian(self):
+        """
+        :rtype: float
+        """
+        return (-self.maxheap[0] + self.minheap[0])/2.0 if len(self.maxheap) == len(self.minheap) else -self.maxheap[0]
 # Your MedianFinder object will be instantiated and called as such:
 # mf = MedianFinder()
 # mf.addNum(1)
