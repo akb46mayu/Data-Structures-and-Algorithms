@@ -30,7 +30,79 @@ You may assume k is always valid, ie: 1 ≤ k ≤ input array's size for non-emp
 
 
 """
+# lazy removal approach
+from heapq import heappush, heappop
+import collections
+class Solution(object):
+    def medianSlidingWindow(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[float]
+        """
+        maxheap = []
+        minheap = []
+        hashes = collections.defaultdict(int)
+        result = []
+        
+        for i in range(k):
+            heappush(minheap, nums[i])
+        for _ in range(k/2, 0, -1):
+            heappush(maxheap, -heappop(minheap))
+            
+        #for i in range(k, len(nums)+1):
+        i = k
+        while True:
+         
+            if k%2: 
+                medval = float(minheap[0])
+            else:
+                medval = float(minheap[0] - maxheap[0])/2.0
+            result.append(medval)
+            
+            if i == len(nums):
+                break
+            
+            rmv = nums[i-k]
+            addv = nums[i]
+            balance = 0
+   
+            i += 1
+            
+            # point removal for top case
+            if rmv >= minheap[0]:
+                balance -= 1
+                if rmv == minheap[0]:
+                    heappop(minheap)
+                else:
+                    hashes[rmv] += 1
+            else:
+                balance += 1
+                if rmv == -maxheap[0]:
+                    heappop(maxheap)
+                else:
+                    hashes[rmv] += 1
 
+            # point addition
+            if minheap and addv >= minheap[0]:
+                balance += 1
+                heappush(minheap, addv)
+            else:
+                balance -= 1
+                heappush(maxheap, -addv)
+
+            # balance case
+            if balance < 0:
+                heappush(minheap, -heappop(maxheap))
+            elif balance > 0:
+                heappush(maxheap, -heappop(minheap))
+            # hashes:
+            while minheap and hashes[minheap[0]]:
+                hashes[heappop(minheap)] -= 1
+            while maxheap and hashes[-maxheap[0]]:
+                hashes[-heappop(maxheap)] -= 1
+        
+        return result  
 
 
 
