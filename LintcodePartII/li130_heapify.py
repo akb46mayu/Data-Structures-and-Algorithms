@@ -20,7 +20,7 @@ Given [3,2,1,4,5], return [1,2,3,4,5] or any legal heap array.
 
 """
 
-class Solution:
+class Solution:  # n:number of points, T = O(nlogn)
     # @param A: Given an integer array
     # @return: void
     def heapify(self, A):
