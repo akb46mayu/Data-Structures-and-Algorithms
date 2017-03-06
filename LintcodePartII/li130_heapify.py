@@ -19,7 +19,30 @@ Given [3,2,1,4,5], return [1,2,3,4,5] or any legal heap array.
 
 
 """
-
+class Solution: # O(n)
+    # @param A: Given an integer array
+    # @return: void
+    def heapify(self, A):
+        # write your code here
+        n = len(A)
+        for i in range(n/2,-1,-1):
+            self.heapifyHelper(A, i)
+        
+    def heapifyHelper(self, A, k):
+        
+        n = len(A)
+        while k < n:  # smallest is the smallest value among Ak(father), son1 and son2
+            smallest = k
+            if 2*k + 1 < n and A[2*k+1] < A[smallest]:
+                smallest = 2*k + 1
+            if 2*k + 2 < n and A[2*k+2] < A[smallest]:
+                smallest = 2*k + 2
+            if smallest == k:
+                break
+            A[smallest], A[k] = A[k], A[smallest]
+            
+            k  = smallest
+            
 class Solution:  # n:number of points, T = O(nlogn)
     # @param A: Given an integer array
     # @return: void
