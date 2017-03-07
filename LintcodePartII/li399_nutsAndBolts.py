@@ -69,7 +69,7 @@ class Solution:
         pivotidx = 0
         newpivotidx = lo
         for i in range(lo, len(items)):
-            if compare.cmp(items[i], pivotval) == 0 or compare.cmp(pivotval, items[i]) == 0:
+            if compare.cmp(items[i], pivotval) == 0 or compare.cmp(pivotval, items[i]) == 0: # cmp default left is nuts right is bolts
                 pivotidx = i
                 break
         items[pivotidx], items[hi] = items[hi], items[pivotidx]
