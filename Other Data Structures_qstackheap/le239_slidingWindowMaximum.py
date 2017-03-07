@@ -35,7 +35,7 @@ class Solution(object):
         dq = deque()
         out = []
         for i in range(len(nums)):
-            while dq and nums[dq[-1]] <= nums[i]:
+            while dq and nums[dq[-1]] <= nums[i]: # < also works
                 dq.pop()
             dq.append(i)
             if i >= k and dq and dq[0] <= i-k:
