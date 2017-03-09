@@ -5,42 +5,36 @@ Given a list of non-negative integers representing the amount of money of each h
 """
 
 
-class Solution(object):
+class Solution(object): # save more space
     def rob(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        
-        n = len(nums)
-        if n == 0:
+        if not nums:  # when nums is None or empty 
             return 0
-        f = [0]*n
-        for i in range(n):
-            if i==0:
-                f[i] = nums[i]
-            elif i == 1:
-                f[i] = max(nums[i], nums[i-1])
-            else:
-                f[i] = max(nums[i]+f[i-2], f[i-1])
-        return f[n-1]
-
-class Solution2(object):# in place
+        n = len(nums)
+        if n == 1: # when it has one element
+            return nums[0]
+        f = [0, 0]
+        f[1] = nums[0]
+        for i in range(2,n+1):
+            f[i%2] = max(f[(i-1)%2], nums[i-1] + f[(i-2)%2])
+        return f[n%2]
+    
+class Solution2(object):
     def rob(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        
-        n = len(nums)
-        if n == 0:
+        if not nums:
             return 0
-      
-        for i in range(n):
-            if i==0:
-                nums[i] = nums[i]
-            elif i == 1:
-                nums[i] = max(nums[i], nums[i-1])
-            else:
-                nums[i] = max(nums[i]+nums[i-2], nums[i-1])
-        return nums[n-1]
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        f = [0] * (n+1)
+        f[1] = nums[0]
+        for i in range(2,n+1):
+            f[i] = max(f[i-1], nums[i-1] + f[i-2])
+        return f[n]
