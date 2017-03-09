@@ -26,7 +26,7 @@ class Solution(object): # save space
         out = 0
         for i in range(m):
             for j in range(n):
-                 if (i == 0 and j == 0) or (i == 0) or (j == 0):
+                 if (i == 0 and j == 0) or (i == 0) or (j == 0): # this can be simplified as (i == 0) or (j == 0)
                      res[i%2][j] = int(matrix[i][j])
                  else:
                      res[i%2][j] = min(res[(i-1)%2][j], res[i%2][j-1], res[(i-1)%2][j-1]) + 1 \
