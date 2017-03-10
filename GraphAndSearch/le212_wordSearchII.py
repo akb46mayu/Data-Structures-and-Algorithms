@@ -21,14 +21,6 @@ You may assume that all inputs are consist of lowercase letters a-z.
 
 """
 
-
-
-
-
-
-
-
-
 ################# it passed through lint compiler but failed the leet because of  time limit exceeding
 class TrieNode:
     def __init__(self):
