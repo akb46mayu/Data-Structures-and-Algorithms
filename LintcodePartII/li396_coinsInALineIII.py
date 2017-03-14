@@ -13,7 +13,31 @@ Given array A = [1,2,4], return true.
 
 Given array A = [1,20,4], return false.
 """
-
+class Solution: # better solution
+    # @param values: a list of integers
+    # @return: a boolean which equals to True if the first player will win
+    def firstWillWin(self, values):
+        # write your code here
+        if not values:
+            return True
+        m = len(values)
+        if m == 1:
+            return True
+        sum = [0]*m
+        dp = [[0]*m for i in range(m)]
+        sumbase = 0
+        for i in range(m):
+            sum[i] = sumbase + values[i]
+            dp[i][i] = values[i]
+            sumbase += values[i]
+        for lenx in range(1,m):   
+            for i in range(m-lenx):
+                j = i + lenx
+                if j >= m:
+                    continue
+                s = sum[j] - sum[i-1] if i >= 1 else sum[j]
+                dp[i][j] = max(s - dp[i+1][j], s - dp[i][j-1])
+        return 2*dp[0][m-1] > sum[m-1]
 
 class Solution:  # TLE problem
     # @param values: a list of integers
