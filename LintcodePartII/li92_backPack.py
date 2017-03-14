@@ -16,7 +16,24 @@ You function should return the max size we can fill in the given backpack.
 
 
 """
-
+class Solution: # dp[i]=1: means size i can be achieved. dp[s-item] = 1 and use current item, we know dp[s] = 1
+    # @param m: An integer m denotes the size of a backpack
+    # @param A: Given n items with size A[i]
+    # @return: The maximum size
+    def backPack(self, m, A):
+        # write your code here
+            if not A:
+               return 0
+            n = len(A)
+            dp = [0] * (m+1)
+            dp[0] = 1
+            size = 0
+            for item in A:
+                for s in range(m,-1,-1):
+                    if s - item >= 0 and dp[s-item] == 1:
+                        dp[s] = 1
+                        size = max(size, s)
+            return size
 
 class Solution: # TLE problem
     # @param m: An integer m denotes the size of a backpack
