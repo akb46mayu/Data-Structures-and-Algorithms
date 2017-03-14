@@ -15,7 +15,7 @@ Given array A = [1,20,4], return false.
 """
 
 
-class Solution:
+class Solution:  # TLE problem
     # @param values: a list of integers
     # @return: a boolean which equals to True if the first player will win
     def firstWillWin(self, values):
