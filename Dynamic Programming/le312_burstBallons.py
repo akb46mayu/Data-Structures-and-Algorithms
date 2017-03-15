@@ -40,6 +40,6 @@ class Solution(object):
                 j = i + lenx
                 dp[i][j] = 0
                 for k in range(i, j+1):
-                    midval = coins[i-1]*coins[k]*coins[j+1]
+                    midval = coins[i-1]*coins[k]*coins[j+1] # previously made a mistake here(I use sum)
                     dp[i][j] = max(dp[i][j], dp[i][k-1] +  midval + dp[k+1][j])
         return dp[1][n]
