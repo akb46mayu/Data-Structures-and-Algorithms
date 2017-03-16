@@ -11,9 +11,57 @@ Give [3, 1, -100, -3, 4], return [4,1].
 
 """
 
+class Solution: # simpler solution
+    # @param {int[]} A an integer array
+    # @return {int[]}  A list of integers includes the index of the 
+    #                  first number and the index of the last number
+    def continuousSubarraySumII(self, A):
+        # Write your code here
+        if not A:
+            return [-1, -1]
+        n = len(A)
+        sumAll = 0
+        
+        # compute the maximum value alone the ragne
+        sumMax = -sys.maxint
+        sumprev = 0
+        start, end = 0, -1
+        for x in A:
+            sumAll += x
+            if sumprev > 0:
+                sumprev += x
+                end += 1
+            else:
+                sumprev = x
+                start = end + 1
+                end = start
+            if sumprev > sumMax:
+                sumMax = sumprev
+                result = [start, end]
 
 
-class Solution:
+        # compute the minimum value in the range:
+        
+        sumprev = 0
+        start, end = 0, -1
+        for x in A:
+
+            if sumprev < 0:
+                sumprev += x
+                end += 1
+            else:
+                sumprev = x
+                start = end + 1
+                end = start
+            if start == 0 and end == n-1:
+                continue
+            if sumAll - sumprev > sumMax:
+                sumMax = sumAll - sumprev
+                result = [(end + 1)%n, (start-1+n)%n]
+       
+        return result
+
+class Solution2:
     # @param {int[]} A an integer array
     # @return {int[]}  A list of integers includes the index of the 
     #                  first number and the index of the last number
