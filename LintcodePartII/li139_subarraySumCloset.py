@@ -40,8 +40,8 @@ class Solution:
         result = [0, 0]
         mindiff = sys.maxint
         for i in range(n-1):
-            if snode[i+1].val - snode[i].val < mindiff or snode[i+1].val - snode[i].val == mindiff\
-               and min(snode[i+1].pos, snode[i].pos) + 1 < result[0]:
+            if snode[i+1].val - snode[i].val < mindiff or (snode[i+1].val - snode[i].val == mindiff\
+               and min(snode[i+1].pos, snode[i].pos) + 1 < result[0]):
                
                mindiff = snode[i+1].val - snode[i].val
                result[0] = min(snode[i+1].pos, snode[i].pos) + 1
