@@ -38,3 +38,28 @@ class Solution:
                 sglobal, eglobal = slocal, elocal
             
         return [sglobal, eglobal]
+
+    
+class Solution2:
+    # @param {int[]} A an integer array
+    # @return {int[]}  A list of integers includes the index of the 
+    #                  first number and the index of the last number
+    def continuousSubarraySum(self, A):
+        # Write your code here
+        if not A:
+            return [-1, -1]
+        sum = 0
+        start, end = 0, -1
+        maxsum = -sys.maxint
+        for x in A:
+            if sum < 0:
+                sum = x
+                start = end + 1
+                end = start
+            else:
+                sum += x
+                end += 1
+            if sum > maxsum:
+                maxsum = sum
+                result = [start, end]
+        return result
