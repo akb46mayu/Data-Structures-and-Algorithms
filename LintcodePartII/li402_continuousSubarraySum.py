@@ -23,7 +23,7 @@ class Solution:
         slocal, elocal = 0, 0
         sglobal, eglobal = 1, 1
         for i in range(n):
-            cursum = prevsum + A[i]
+            cursum = prevsum + A[i] # compute the current sum then decide
             
             if cursum < 0 or (cursum > 0 and prevsum <= 0):
                 cursum = A[i]
@@ -52,7 +52,7 @@ class Solution2:
         start, end = 0, -1
         maxsum = -sys.maxint
         for x in A:
-            if sum < 0:
+            if sum < 0:  # decide the previous sum then decide
                 sum = x
                 start = end + 1
                 end = start
