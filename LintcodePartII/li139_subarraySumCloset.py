@@ -41,8 +41,8 @@ class Solution:
         mindiff = sys.maxint
         for i in range(n-1):
             if snode[i+1].val - snode[i].val < mindiff or (snode[i+1].val - snode[i].val == mindiff\
-               and min(snode[i+1].pos, snode[i].pos) + 1 < result[0]):
-               
+               and min(snode[i+1].pos, snode[i].pos) + 1 < result[0]): # make the pos left most 
+           #if snode[i+1].val - snode[i].val < mindiff:  # the if statement can also be this simple one    
                mindiff = snode[i+1].val - snode[i].val
                result[0] = min(snode[i+1].pos, snode[i].pos) + 1
                result[1] = max(snode[i+1].pos, snode[i].pos)
