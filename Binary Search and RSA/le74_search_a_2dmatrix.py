@@ -22,31 +22,29 @@ class Solution(object):
         return False
         
         
- class Solution2(object):  # Nine chapter's template sol
+class Solution2(object):
     def searchMatrix(self, matrix, target):
         """
         :type matrix: List[List[int]]
         :type target: int
         :rtype: bool
         """
-        if len(matrix) == 0 :
+
+        if matrix == [] or matrix == [[]]:
             return False
-        m = len(matrix) # number of rows 
-        n = len(matrix[0])
-        start, end = 0, m*n - 1
-        while start+1 < end:
-            mid = (start + end)/2
-            x,y = mid/n, mid%n
-            if matrix[x][y] <= target:
-                start = mid
-            else :
-                end = mid
-                
-        x,y = start/n, start%n
-        if matrix[x][y] == target:
-          return True
-            
-        x,y = end/n, end%n
-        if matrix[x][y] == target:
-          return True
+        m, n = len(matrix), len(matrix[0])
+        left, right = 0, m*n - 1
+        while left + 1 < right:
+            mid = left + (right - left)/2
+            row, col = mid / n, mid % n
+            if matrix[row][col] < target:
+                left = mid
+            else:
+                right = mid
+        row, col = left / n, left % n
+        if matrix[row][col] == target:
+            return True
+        row, col = right/n, right % n
+        if matrix[row][col] == target:
+            return True
         return False
