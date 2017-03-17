@@ -23,10 +23,10 @@ class Solution(object):
             return 0
         n = len(nums)
         maxi, mini = max(nums), min(nums)
-        if maxi == mini:
+        if maxi == mini:  # if all elements are the same, max gap is 0
             return 0
-        bsize = max(1,(maxi - mini)/ (n-1))
-        k = (maxi-mini)/bsize + 1# number of buckets
+        bsize = max(1,(maxi - mini)/ (n-1))  # when bucket size is 0, update it to 1 (denominator)
+        k = (maxi-mini)/bsize + 1 # number of buckets(this is different from the formula)
         localmin = [-1]*k
         localmax = [-1]*k
         flag = [0]*k
@@ -37,7 +37,7 @@ class Solution(object):
             localmax[t] = self.max(nums[i], localmax[t])
             #print t, localmin[t], localmax[t]
         globalmax = 0
-        prevmax = mini
+        prevmax = mini  # rethink about this
         for t in range(0,k):
             if flag[t] == 0:
                 continue
