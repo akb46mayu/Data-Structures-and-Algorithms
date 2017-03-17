@@ -11,7 +11,19 @@ You may assume all elements in the array are non-negative integers and fit in th
 Credits:
 Special thanks to @porker2008 for adding this problem and creating all test cases.
 """
-
+class Solution:
+     # @param nums: a list of integers
+     # @return: the maximum difference
+    def maximumGap(self, nums):
+        # write your code here
+        n = len(nums)
+        if n <= 1:
+            return 0
+        nums.sort()
+        maxout = -sys.maxint
+        for i in range(1,n):
+            maxout = max(maxout, nums[i] - nums[i-1])
+        return maxout
 
 class Solution(object):
     def maximumGap(self, nums):
