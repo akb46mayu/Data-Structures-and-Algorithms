@@ -23,7 +23,7 @@ class Solution(object):
         
         
 class Solution2(object):
-    def searchMatrix(self, matrix, target):
+    def searchMatrix(self, matrix, target): # leetcode seems to improve its test cases by adding the corner case [] and [[]]
         """
         :type matrix: List[List[int]]
         :type target: int
