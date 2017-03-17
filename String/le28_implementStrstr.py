@@ -11,6 +11,7 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
+        # be careful of the corner case, when src == target == '', answer is 0
         if haystack is None or needle is None:  # i suggest to add this. 
             return -1
         tl = len(needle)
