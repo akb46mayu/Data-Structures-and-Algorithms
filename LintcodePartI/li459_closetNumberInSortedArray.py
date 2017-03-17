@@ -19,7 +19,30 @@ Given [1, 3, 3, 4] and target = 2, return 0 or 1 or 2.
 
 
 """
+class Solution: # O log(n)
+    # @param {int[]} A an integer array sorted in ascending order
+    # @param {int} target an integer
+    # @return {int} an integer
+    def closestNumber(self, A, target):
+        # Write your code here
+        if A is None or target is None:
+            return -1
 
+        n = len(A)
+        left, right = 0, n-1
+        
+        while left + 1 < right:
+            mid = left + (right - left)/2
+            if A[mid] - target < 0:
+                left = mid
+            else:
+                if A[mid] == 0:
+                    return mid
+                right = mid
+        if abs(A[left]-target) < abs(A[right]-target):
+            return left
+        else:
+            return right
 
 class Solution:  # O(n) TLE
     # @param {int[]} A an integer array sorted in ascending order
