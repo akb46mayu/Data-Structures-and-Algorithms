@@ -38,7 +38,7 @@ class Solution(object):
         if maxi == mini:  # if all elements are the same, max gap is 0
             return 0
         bsize = max(1,(maxi - mini)/ (n-1))  # when bucket size is 0, update it to 1 (denominator)
-        k = (maxi-mini)/bsize + 1 # number of buckets(this is different from the formula)
+        k = (maxi-mini)/bsize + 1 # number of buckets(this is different from the formula), strictly this should be the ceiling of..
         localmin = [-1]*k
         localmax = [-1]*k
         flag = [0]*k
