@@ -17,8 +17,9 @@ class Solution:
         n = len(nums)
         left, right = 0, n-1
         while left <= right:
-            mid = left + (right - left)/2
-            if (mid == 0 or nums[mid] > nums[mid - 1]) and\ # this should be remembered
+            mid = left + (right - left)/2 
+            # the following condition should be remembered
+            if (mid == 0 or nums[mid] > nums[mid - 1]) and\
                (mid == n - 1 or nums[mid] > nums[mid+1]):
                 return nums[mid]
             elif nums[mid] < nums[mid-1]:
