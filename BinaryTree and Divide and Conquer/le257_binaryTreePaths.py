@@ -40,8 +40,8 @@ class Solution(object):
         path.append(str(root.val))
         if not root.left and not root.right:
             paths.append('->'.join(path))
-            path.pop()
+            path.pop() # is this pop for printing result usage?
             return 
         self.btreeHelper(root.left, path , paths)
         self.btreeHelper(root.right, path, paths)
-        path.pop()
+        path.pop() # is this pop for traverse usage?
