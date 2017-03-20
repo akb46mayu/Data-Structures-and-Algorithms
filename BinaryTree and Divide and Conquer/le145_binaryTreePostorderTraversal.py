@@ -39,3 +39,26 @@ class Solution(object):
         self.postorderHelper(root.left, ans)
         self.postorderHelper(root.right, ans)
         ans.append(root.val)
+      
+class Solution2(object): # non recursion
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if not root:
+            return []
+        ans = []
+        stack = [(root, False)]
+        while stack:
+            popEle, isVisited = stack.pop()
+            if popEle is None:
+                continue
+                
+            if isVisited == True:
+                ans.append(popEle.val)
+            else:
+                stack.append((popEle, True))
+                stack.append((popEle.right, False))
+                stack.append((popEle.left, False))
+        return ans
