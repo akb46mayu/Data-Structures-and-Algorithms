@@ -20,7 +20,7 @@ return [1,3,2].
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
+class Solution(object): # recursion
     def inorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -39,3 +39,32 @@ class Solution(object):
         self.inorderHelper(root.left, ans)
         ans.append(root.val)
         self.inorderHelper(root.right, ans)
+
+
+class Solution2(object): # non-recursion
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        if not root:
+            return []
+        ans = []
+        stack = [root]
+        while 1:
+            if stack[-1].left:
+               stack.append(stack[-1].left)
+            else:
+                break
+        while stack:
+            popEle = stack.pop()
+            ans.append(popEle.val)
+            if popEle.right:
+                stack.append(popEle.right)
+                while 1:
+                    if stack[-1].left:
+                       stack.append(stack[-1].left)
+                    else:
+                        break
+        return ans      
+      
