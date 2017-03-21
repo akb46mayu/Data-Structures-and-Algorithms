@@ -52,5 +52,5 @@ class Solution(object):
             self.lastNode.right = root
         self.lastNode = root
         right = root.right
-        self.dfsHelper(root.left)
+        self.dfsHelper(root.left) # after this step root's location (direction) has been changed
         self.dfsHelper(right)
