@@ -13,7 +13,8 @@ in which the depth of the two subtrees of every node never differ by more than 1
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
+# when no nodes, height is 0. one node, heigt is 1
+class Solution(object):  
     def isBalanced(self, root):
         """
         :type root: TreeNode
