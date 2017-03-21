@@ -44,7 +44,7 @@ class Solution(object):
         self.longHelper(root)
         return self.maxval
         
-    def longHelper(self, root):  # for all the paths from cur root to any leafs, the longest path including the cur root node
+    def longHelper(self, root):  # for all the paths from cur root to any childs, the longest path including the cur root node
         if not root:
             return 0
         
