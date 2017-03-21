@@ -24,7 +24,7 @@ Binary tree [1,2,3], return false.
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
+class Solution(object): # recusion top down approach?
     def isValidBST(self, root):
         """
         :type root: TreeNode
@@ -38,7 +38,7 @@ class Solution(object):
         return root.val> minv and root.val<maxv and self.isValidBSTHelper(root.left, minv, root.val) and self.isValidBSTHelper(root.right, root.val, maxv)
 
     
-class Solution2: # divide and conquer
+class Solution2: # recursion bottom up approach? divide and conquer
     """
     @param root: The root of binary tree.
     @return: True if the binary tree is BST, or false
