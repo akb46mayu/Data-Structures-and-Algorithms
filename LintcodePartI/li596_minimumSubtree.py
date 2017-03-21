@@ -27,7 +27,7 @@ class TreeNode:
         this.val = val
         this.left, this.right = None, None
 """
-class Solution:
+class Solution: # divide and conquer
     # @param {TreeNode} root the root of binary tree
     # @return {TreeNode} the root of the minimum subtree
     def findSubtree(self, root):
