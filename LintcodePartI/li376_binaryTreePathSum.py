@@ -63,4 +63,37 @@ class Solution:
         self.btHelper(root.right, path, target, paths)
         self.sum0 -= root.val
         path.pop()
+ 
+class Solution:  # the same method as above, with sum0 as a parameter
+    # @param {TreeNode} root the root of binary tree
+    # @param {int} target an integer
+    # @return {int[][]} all valid paths
+    def binaryTreePathSum(self, root, target):
+        # Write your code here
+        if not root:
+            return []
+        path = []
+        paths = []
+        sum0 = 0
+        self.btHelper(root, path, target, sum0, paths)
+        return paths
         
+    def btHelper(self, root, path, target, sum0, paths):
+        if root is None:
+            return
+        # node is non empty
+        path.append(root.val)
+        sum0 += root.val
+        if not root.left and not root.right:
+            if sum0 == target:
+                paths.append(path[:])  
+                sum0 -= root.val 
+                path.pop()
+            else:            
+                sum0 -= root.val
+                path.pop()
+            return    
+        self.btHelper(root.left, path, target, sum0, paths)
+        self.btHelper(root.right, path, target, sum0, paths)
+        sum0 -= root.val
+        path.pop()
