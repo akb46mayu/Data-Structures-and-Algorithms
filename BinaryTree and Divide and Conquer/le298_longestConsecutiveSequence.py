@@ -56,7 +56,8 @@ class Solution(object):
             curmax = max(curmax, leftmax + 1)
         if root.right and root.val + 1 == root.right.val:
             curmax = max(curmax, rightmax + 1)
-        self.maxval = max(curmax, self.maxval, leftmax, rightmax)
+        # if the cur node does not satisfy the consecutive property, curmax is 1.
+        self.maxval = max(curmax, self.maxval, leftmax, rightmax) 
         return curmax
         
   class Solution2(object):
