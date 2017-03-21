@@ -44,7 +44,7 @@ class Solution(object):
         self.dfsHelper(root)
 
         
-    def dfsHelper(self, root):
+    def dfsHelper(self, root): # i am not familiar with this case when reference is a node not a list/dict
         if not root:
             return
         if self.lastNode:
