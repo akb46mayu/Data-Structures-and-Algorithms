@@ -36,3 +36,29 @@ class Solution(object):
         if root is None:
             return True
         return root.val> minv and root.val<maxv and self.isValidBSTHelper(root.left, minv, root.val) and self.isValidBSTHelper(root.right, root.val, maxv)
+
+    
+class Solution2: # divide and conquer
+    """
+    @param root: The root of binary tree.
+    @return: True if the binary tree is BST, or false
+    """  
+    def isValidBST(self, root):
+        # write your code here
+        
+        if not root:
+            return True
+        ans, _ , _ = self.bstHelper(root)
+        return ans
+        
+    def bstHelper(self, root):  # for the current tree with the current node, return isBool, minval of the tree and maxval
+        if not root:
+            return  True, sys.maxint, -sys.maxint # isbst, min, max
+        isBSTL, minleft, maxleft = self.bstHelper(root.left)
+        isBSTR, minright, maxright = self.bstHelper(root.right)
+        
+        if not isBSTL or not isBSTR:
+            return False, 0, 0
+        if (root.left and root.val <= maxleft) or (root.right and root.val >= minright):
+            return False, 0, 0
+        return True, min(root.val, minleft), max(root.val, maxright)
