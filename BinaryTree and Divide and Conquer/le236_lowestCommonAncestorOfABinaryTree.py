@@ -21,6 +21,13 @@ since a node can be a descendant of itself according to the LCA definition.
 #         self.left = None
 #         self.right = None
 
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
         """
@@ -29,15 +36,18 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        if root is p or root is q or root is None:
-            return root
+        return self.lcaHelper(root, p, q)
         
-        left = self.lowestCommonAncestor(root.left, p, q)
-        right = self.lowestCommonAncestor(root.right, p, q)
-        if left is not None and right is not None:
+        
+    def lcaHelper(self, root, p, q):
+        if root is None or root == p or root == q:
             return root
-        if left is not None:
+        left = self.lcaHelper(root.left, p, q)
+        right = self.lcaHelper(root.right, p, q)
+        if left and right:
+            return root
+        if left:
             return left
-        if right is not None:
+        if right:
             return right
         return None
