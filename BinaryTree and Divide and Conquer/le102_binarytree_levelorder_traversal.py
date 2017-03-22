@@ -37,7 +37,7 @@ class Solution(object):  #use two queues (roughly BFS)
         q = [root]
         while q:
             result.append([n.val for n in q])
-            newq = []
+            newq = []  # this is also the next level queue
             for n in q:
                 if n.left:
                     newq.append(n.left)
