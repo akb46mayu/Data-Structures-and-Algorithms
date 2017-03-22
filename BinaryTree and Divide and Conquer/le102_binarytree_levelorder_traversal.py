@@ -25,7 +25,7 @@ Show Similar Problems
 #         self.left = None
 #         self.right = None
 
-class Solution(object):  #use two queues (roughly BFS)
+class Solution(object):  #use two queues (roughly BFS), a little bit tricky, we appedn the whole level instead of one element
     def levelOrder(self, root):
         """
         :type root: TreeNode
