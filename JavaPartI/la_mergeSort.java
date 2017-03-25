@@ -1,13 +1,13 @@
 public class Solution {
   public int[] mergeSort(int[] array) {
     // Write your solution here.
-    if (array == null){
-			return array;
-		}
-		int[] helper = new int[array.length];
-		
-		mergeSort(array, helper, 0, array.length-1);
-		return array;
+        if (array == null){
+	     return array;
+	}
+	int[] helper = new int[array.length];
+
+	mergeSort(array, helper, 0, array.length-1);
+	return array;
     
   }
   private void mergeSort(int[] array, int[] helper, int left, int right){
