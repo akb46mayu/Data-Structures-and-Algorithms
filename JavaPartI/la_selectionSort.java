@@ -21,9 +21,6 @@ public class Solution {
       array[i] = array[idx];
       array[idx] = temp;
     }
-    
-    
-    
     return array;
   }
 }
