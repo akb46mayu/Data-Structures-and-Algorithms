@@ -1,4 +1,4 @@
-///
+/// new corner case: dict can be null at any position. 
 
 public class Solution {
   public int search(Dictionary dict, int target) {
