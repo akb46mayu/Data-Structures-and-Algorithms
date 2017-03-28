@@ -23,7 +23,7 @@ public class Solution {
     if (stackout.size() == 0) {
       stackin2out();
     }
-    return stackout.empty() ? null : stackout.peek();
+    return stackout.empty() ? null : stackout.peek(); // when it is empty, without this ,we will have exceptions
   }
   
   public int size() {
