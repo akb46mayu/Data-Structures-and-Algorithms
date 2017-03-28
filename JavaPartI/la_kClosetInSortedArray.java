@@ -12,7 +12,7 @@ public class Solution {
     
     int left = idx, right = idx, count = 0;
     out[0] = array[idx];
-    while (right - left + 1 < k){
+    while (right - left + 1 < k){  // code inside the while loop can be simplified
       if (left == 0){
         out[++count] = array[++right];
       } else if (right == array.length -1 ){
