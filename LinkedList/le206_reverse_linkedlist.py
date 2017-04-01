@@ -14,7 +14,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        cur = head  # this is more clear 
+        cur = head  # this is more clear  (head can also be used as the cur pointer)
         prev = None
         while cur!= None:
             temp = cur.next
