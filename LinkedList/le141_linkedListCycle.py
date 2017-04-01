@@ -19,7 +19,7 @@ class Solution(object):
         :rtype: bool
         """
         fast, slow = head, head
-        while fast and fast.next:
+        while fast and fast.next:  # when fast.next.next = null, we can check this stage before it happens
             fast = fast.next.next
             slow = slow.next
             if fast == slow:
