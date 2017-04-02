@@ -18,3 +18,16 @@ public class Solution {
         return prev;
     }
 }
+
+
+public class Solution2 {  //recursion
+    public ListNode reverseList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newnode = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newnode;
+    }
+}
