@@ -1,3 +1,4 @@
+// peekFirst, pollFirst, offerFirst, isEmpty
 public class Solution {
   private LinkedList<Integer> stack;
   private LinkedList<Integer> minstack;
