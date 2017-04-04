@@ -44,7 +44,8 @@ class Solution:
     def searchNode(self, graph, values, node, target):
         # Write your code here
         
-        q = Queue.Queue(maxsize = len(graph))
+        #q = Queue.Queue(maxsize = len(graph))
+        q = Queue.Queue()
         if target == values[node]:
             return node
         q.put(node)
