@@ -15,8 +15,6 @@ public class Solution {
     if (root == null){
       return result;
     }
-    
-    
     List<Integer> left = preOrder(root.left);
     List<Integer> right = preOrder(root.right);
     result.add(root.key);
