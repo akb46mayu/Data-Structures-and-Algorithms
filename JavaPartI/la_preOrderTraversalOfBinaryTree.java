@@ -24,3 +24,28 @@ public class Solution {
     
   }
 }
+
+
+
+public class Solution2 {  // non - recursion
+  public List<Integer> preOrder(TreeNode root) {
+    // Write your solution here.
+    List<Integer> result = new ArrayList<Integer>();
+    if (root == null) {
+      return result;
+    }
+    Stack<TreeNode> stack = new Stack<TreeNode>();
+    stack.push(root);
+    
+    while (!stack.empty()) {
+      TreeNode curnode = stack.pop();
+      result.add(curnode.key);
+      if (curnode.right != null) {
+        stack.push(curnode.right);
+      }
+      if (curnode.left != null) {
+        stack.push(curnode.left);
+      }
+    }
+    return result;
+  }
