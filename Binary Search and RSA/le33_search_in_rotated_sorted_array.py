@@ -1,4 +1,4 @@
-class Solution(object):
+class Solution(object):   # can also use the classical binary search without post processing, see java
     def search(self, nums, target):
         """
         :type nums: List[int]
