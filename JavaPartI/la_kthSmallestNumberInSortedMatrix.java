@@ -34,6 +34,6 @@ public class Solution {
         }
       }
     }
-    return pq.poll().val;
+    return pq.poll().val; // can also be peek
   }
 }
