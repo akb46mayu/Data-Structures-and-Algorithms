@@ -5,7 +5,7 @@ public class Solution {
     // Write your solution here.
     int m = matrix.length, n = matrix[0].length;
     int left = 0, right = m * n  - 1;
-    while (left <= right){
+    while (left <= right){  // it does not need to compute when m or n is 0. 
       int mid = left + (right - left)/2;
       int i = mid / n, j = mid % n;
       if (target == matrix[i][j]){
