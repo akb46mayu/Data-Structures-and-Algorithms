@@ -43,3 +43,47 @@ public class Solution {
     }
   }
 }
+
+
+
+/////////////////////////
+
+public class Solution {
+  public int[] kClosest(int[] array, int target, int k) {
+    // Write your solution here
+    if (array == null || array.length == 0){
+      return array; 
+    }
+    int[] out = new int[k];
+    int idx = findIdx(array, target);
+    int left = idx, right = idx + 1;
+    for (int i = 0; i < k; i++) {  // better logic 
+      if (right == array.length || (left >= 0 && Math.abs(array[left] - target) < Math.abs(array[right] - target))) {
+        out[i] = array[left--];
+      } else {
+        out[i] = array[right++];
+      }
+    }
+    return out;
+  }
+  
+  private int findIdx(int[] array, int target){
+    int left = 0, right = array.length - 1;
+    while (left + 1 < right){
+      int mid = left + (right - left)/2;
+      if (target <= array[mid]){
+        right = mid;
+      } else{
+        left = mid;
+      }
+    }
+    if (Math.abs(array[left] - target) < Math.abs(array[right] - target)){
+      return left;
+    } else {
+      return right;
+    }
+  }
+  
+  
+  
+}
