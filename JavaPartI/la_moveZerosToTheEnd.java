@@ -1,7 +1,7 @@
 
 
 import java.util.Arrays;
-public class move0 {
+public class move0 {   // this method will change the order of array, althoug it can move all the elements to the right.
 	public int[] moveZero(int[] array) {
 	    // Write your solution here.
 	    if (array.length == 0){
