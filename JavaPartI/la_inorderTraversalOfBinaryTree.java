@@ -30,3 +30,20 @@ public class Solution {
     return result;
   }
 }
+/////
+
+public class Solution2 {  //recursion + divide conquer type
+  public List<Integer> inOrder(TreeNode root) {
+    // Write your solution here.
+    List<Integer> result = new ArrayList<Integer>();
+    if (root == null) {
+     return result; 
+    }
+    List<Integer> left = inOrder(root.left);
+    result.addAll(left);
+    result.add(root.key);
+    List<Integer> right = inOrder(root.right);
+    result.addAll(right);
+    return result;
+  }
+}
