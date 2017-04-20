@@ -10,8 +10,8 @@
  */
 public class Solution {
   public ListNode merge(ListNode one, ListNode two) {
-    // write your solution here
-    ListNode dummy = new ListNode(0);
+    // write your solution here  (do not need to decide one, two whether are null at the same time , because the code does it at the end)
+    ListNode dummy = new ListNode(0);   
     ListNode cur = dummy;
     while (one!=null && two != null) {
       if (one.value <= two.value) {
