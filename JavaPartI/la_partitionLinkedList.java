@@ -11,7 +11,7 @@
 public class Solution {
   public ListNode partition(ListNode head, int target) {
     // write your solution here
-    if (head == null || head.next == null) {
+    if (head == null || head.next == null) {  // this can also be omitted
       return head;
     }
     ListNode dummysmall = new ListNode(0);
