@@ -1,43 +1,38 @@
-// peekFirst, pollFirst, offerFirst, isEmpty
 public class Solution {
-  private LinkedList<Integer> stack;
-  private LinkedList<Integer> minstack;
+  private Deque<Integer> stack;
+  private Deque<Integer> mstack;
   public Solution() {
     // write your solution here
     stack = new LinkedList<Integer>();
-    minstack = new LinkedList<Integer>();
+    mstack = new LinkedList<Integer>();
   }
   
   public int pop() {
-    if (stack.isEmpty()) {
+    if (stack.size() == 0) {
       return -1;
-    } 
-    int out = stack.pollFirst();
-    if (out == minstack.peekFirst()) {
-      minstack.pollFirst();
     }
-    return out;    
+    int temp = stack.pollFirst();
+    if (temp == mstack.peekFirst()) {
+      mstack.pollFirst();
+    }
+    return temp;
   }
   
   public void push(int element) {
     stack.offerFirst(element);
-    if (minstack.isEmpty() || element <= minstack.peekFirst()) {
-      minstack.offerFirst(element);
-    }
+    if (mstack.size() == 0 || element <= mstack.peekFirst()) {
+      mstack.offerFirst(element);
+    } 
   }
   
   public int top() {
-    if (stack.isEmpty()) {
+    if (stack.size() == 0 ) {
       return -1;
     }
-    int out = stack.peekFirst();
-    return out;
+    return stack.peekFirst();
   }
   
   public int min() {
-    if (minstack.isEmpty()) {
-      return -1;
-    }
-    return minstack.peekFirst();
+    return mstack.size() == 0 ? -1 : mstack.peekFirst();
   }
 }
