@@ -9,8 +9,6 @@ class Pair {
   }
 }
 
-
-
 public class Solution {
     /**
      * @param A an integer arrays sorted in ascending order
