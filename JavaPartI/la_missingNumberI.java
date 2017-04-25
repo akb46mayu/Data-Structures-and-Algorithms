@@ -12,3 +12,19 @@ public class Solution {
     return result;
   }
 }
+/////
+public class Solution2 {
+  public int missing(int[] array) {
+    //
+    HashSet<Integer> hash = new HashSet<Integer>();
+    for (int i : array) {
+      hash.add(i);
+    }
+    for (int j = 1; j <= array.length + 1; j++) {
+      if (!hash.contains(j)) { 
+        return j;
+      } 
+    }
+    return -1;
+  }
+}
