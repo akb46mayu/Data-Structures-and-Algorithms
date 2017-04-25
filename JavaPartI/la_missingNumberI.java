@@ -12,7 +12,7 @@ public class Solution {
     return result;
   }
 }
-/////
+////////////////////////////////////////////
 public class Solution2 {
   public int missing(int[] array) {
     //
@@ -28,3 +28,4 @@ public class Solution2 {
     return -1;
   }
 }
+//////////////////////////////////////////////
