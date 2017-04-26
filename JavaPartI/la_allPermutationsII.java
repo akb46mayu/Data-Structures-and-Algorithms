@@ -1,3 +1,4 @@
+// with duplicates 
 public class Solution {
   public List<String> permutations(String set) {
     // Write your solution here.
