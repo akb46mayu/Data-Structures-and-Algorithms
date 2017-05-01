@@ -13,3 +13,22 @@ public class Solution {
     return true;
   }
 }
+
+/////  with bit operations, count the number of ones
+public class Solution2 {
+  public boolean isPowerOfTwo(int number) {
+    // Write your solution here.
+    if (number <= 0) {
+      return false;
+    }
+    int count = 0;
+    while (number > 0) {
+      count += (number & 1);
+      number >>= 1;
+      if (count == 2) {
+        return false;
+      }
+    }
+    return true;
+  }
+}
