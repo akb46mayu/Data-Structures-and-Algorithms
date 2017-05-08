@@ -1,4 +1,5 @@
 // assume: input is a square matrix and not null. 
+// size: the height or the width of the current matrix
 public class Solution {
   public List<Integer> spiral(int[][] matrix) {
     // Write your solution here.
