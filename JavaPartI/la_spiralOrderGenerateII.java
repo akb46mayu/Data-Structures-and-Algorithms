@@ -1,3 +1,6 @@
+// print row's whole elements , print col's part elements excluding up and down
+// left, right are row direction's two pointers. columwise
+
 public class Solution {
   public int[][] spiralGenerate(int m, int n) {
     // Write your solution here.
