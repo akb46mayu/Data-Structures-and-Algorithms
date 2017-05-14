@@ -1,3 +1,5 @@
+// dp[i]: min steps start from the range: [0, i - 1]
+
 public class Solution {
   public int minJump(int[] array) {
     // Write your solution here.
