@@ -1,3 +1,4 @@
+// dp[i][j] : max number of ones inside the matrix with (0,0) and (i, j) as the top left and botom right corner
 public class Solution {
   public int largest(int[][] matrix) {
     // Write your solution here.
