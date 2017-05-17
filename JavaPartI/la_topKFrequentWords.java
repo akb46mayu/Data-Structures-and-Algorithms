@@ -2,7 +2,7 @@
 public class Solution {
   public String[] topKFrequent(String[] combo, int k) {
     // Write your solution here.
-    if (combo.length == 0) {
+            if (combo.length == 0) {
 	      return combo;
 	    }
 	    PriorityQueue<Map.Entry<String, Integer>> minHeap = new PriorityQueue<Map.Entry<String, Integer>>(k, new
