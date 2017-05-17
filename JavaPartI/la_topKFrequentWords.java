@@ -13,7 +13,7 @@ public class Solution {
 	    });
 	    
 	    Map<String, Integer> freqMap = countWord(combo);
-	    for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
+	    for (Map.Entry<String, Integer> entry : freqMap.entrySet()) { // this function will make minheap size <= k
 	      if (minHeap.size() < k) {
 	        minHeap.offer(entry);
 	      } else {
