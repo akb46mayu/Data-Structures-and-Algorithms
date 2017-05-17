@@ -1,3 +1,4 @@
+// XOR operation
 public class Solution {
   public int missing(int[] array) {
     // Write your solution here.
@@ -12,7 +13,7 @@ public class Solution {
     return result;
   }
 }
-////////////////////////////////////////////
+/////////// hashtable
 public class Solution2 {
   public int missing(int[] array) {
     //
