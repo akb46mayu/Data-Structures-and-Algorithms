@@ -18,7 +18,7 @@ public class Solution {
     return result;
   }
 }
-///// sol2 
+///// sol2: 
 
 public class Solution2 {
   public List<Integer> common(List<Integer> A, List<Integer> B) {
@@ -44,7 +44,7 @@ public class Solution2 {
         countB.put(B.get(i), temp + 1);
       }
     }
-    //
+    // find the intersections between two hashmaps
     for(Map.Entry<Integer, Integer> entry : countA.entrySet()) {
       if (countB.containsKey(entry.getKey())) {
         int lenInt = Math.min(countB.get(entry.getKey()), entry.getValue());
