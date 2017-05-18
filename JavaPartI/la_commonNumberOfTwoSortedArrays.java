@@ -57,7 +57,7 @@ public class Solution2 {
   }
 }
 /// with one hashtable (my sol)
-public class Solution {
+public class Solution3 {
   public List<Integer> common(List<Integer> A, List<Integer> B) {
     // Write your solution here.
     List<Integer> result = new ArrayList<Integer>();
