@@ -18,7 +18,7 @@ public class Solution {
     return result;
   }
 }
-/////
+///// sol2 
 
 public class Solution2 {
   public List<Integer> common(List<Integer> A, List<Integer> B) {
@@ -56,6 +56,7 @@ public class Solution2 {
     return result;
   }
 }
+
 /// with one hashtable (my sol)
 public class Solution3 {
   public List<Integer> common(List<Integer> A, List<Integer> B) {
