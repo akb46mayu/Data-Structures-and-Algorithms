@@ -20,7 +20,7 @@ public class Solution {
 }
 /////
 
-public class Solution {
+public class Solution2 {
   public List<Integer> common(List<Integer> A, List<Integer> B) {
     // Write your solution here.
     List<Integer> result = new ArrayList<Integer>();
@@ -54,5 +54,48 @@ public class Solution {
       }
     }
     return result;
+  }
+}
+/// with one hashtable (my sol)
+public class Solution {
+  public List<Integer> common(List<Integer> A, List<Integer> B) {
+    // Write your solution here.
+    List<Integer> result = new ArrayList<Integer>();
+    int a = A.size(), b = B.size();
+    if (a < b) {
+      Map<Integer, Integer> map = numCount(A);
+      result = commonHelper(B, map);
+    } else {
+      Map<Integer, Integer> map = numCount(B);
+      result = commonHelper(A, map);
+    }
+    return result;
+  }
+  private List<Integer> commonHelper(List<Integer> s, Map<Integer, Integer> map) {
+    int n = s.size();
+    List<Integer> result = new ArrayList<Integer>();
+    for (int i = 0; i < n; i++) {
+      int num = s.get(i);
+      Integer count = map.get(num);
+      if (count!= null && count > 0) {
+        result.add(num);
+        map.put(num, --count);
+      }
+    }
+    return result;
+  }
+  private Map<Integer, Integer> numCount(List<Integer> list) {
+    Map<Integer, Integer> map = new HashMap<>();
+    int n = list.size();
+    for (int i = 0; i < n; i++) {
+      int num = list.get(i);
+      Integer count = map.get(num);
+      if (count != null) {
+        map.put(num, count + 1);
+      } else {
+        map.put(num, 1);
+      }
+    }
+    return map;
   }
 }
