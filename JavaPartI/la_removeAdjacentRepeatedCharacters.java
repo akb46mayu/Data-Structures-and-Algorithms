@@ -16,6 +16,6 @@ public class Solution {
         arr[++i] = arr[j++];
       }
     }
-    return new String(arr, 0, i + 1);  // i + 1 total number of elements
+    return new String(arr, 0, i + 1);  // i + 1 total number of elements, do not forget to add "new"
   } 
 }
