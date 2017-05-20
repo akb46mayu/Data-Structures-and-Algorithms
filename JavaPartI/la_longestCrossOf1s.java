@@ -9,7 +9,7 @@ public class Solution {
 	    int[][] temp2 = rightdown(matrix, m, n);
 	    return merge(temp1, temp2);
 	  }
-	  
+	  // merge two matrix according to the min val and modify it in A in place, return the global max edge length
 	  private int merge(int[][] A, int[][] B) {
 	    int m = A.length, n = A[0].length;
 	    int result = 0;
@@ -21,7 +21,7 @@ public class Solution {
 	    }
 	    return result;
 	  }
-
+          // combine left and up matrix
 	  private int[][] leftup(int[][] matrix, int m, int n) {
 	    int[][] left = new int[m][n];
 	    int[][] up = new int[m][n];
@@ -47,6 +47,7 @@ public class Solution {
 	    merge(left, up);
 	    return left;
 	  }
+	// combine right and down matrix
 	  private int[][] rightdown(int[][] matrix, int m, int n) {
 	    int[][] right = new int[m][n];
 	    int[][] down = new int[m][n];
