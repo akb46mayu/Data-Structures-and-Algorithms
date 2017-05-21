@@ -21,3 +21,28 @@ public class Solution {
     return new String(arr, 0, end + 1);
   }
 }
+
+
+///// code logic two
+public class Solution {
+  public String deDup(String input) {
+    // Write your solution here.
+    if (input == null || input.length() <= 1 ) {
+      return input;
+    }  
+    char[] arr = input.toCharArray();
+    int end  = 0;
+    int i = 1, n = arr.length;
+    while (i < n) {
+      if (end != -1 && arr[i] == arr[end]) {
+         while (i < n && arr[i] == arr[end]) {
+            i++;
+         }
+         end--;
+      } else {
+         arr[++end] = arr[i++];
+      }
+    }
+    return new String(arr, 0, end + 1);
+  }
+}
