@@ -1,3 +1,4 @@
+/// first deal with non repeated case
 public class Solution {
   public String deDup(String input) {
     // Write your solution here.
@@ -23,7 +24,7 @@ public class Solution {
 }
 
 
-///// code logic two
+///// code logic two: first deal with repeated case
 public class Solution {
   public String deDup(String input) {
     // Write your solution here.
