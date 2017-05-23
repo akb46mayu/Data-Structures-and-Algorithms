@@ -1,3 +1,4 @@
+// reverse sub, then total
 public class Solution {
   public String rightShift(String input, int n) {
     // Write your solution here.
@@ -23,4 +24,19 @@ public class Solution {
       right--;
     }
   }
-}
+///// reverse total, then sub,  the following logic also work:
+  
+  public String rightShift(String input, int n) {
+    // Write your solution here.
+    if (input.length() == 0 || n == 0) {
+      return input;
+    }
+    char[] arr = input.toCharArray();
+    int alen = input.length();
+    n = n % alen;
+    reverse(arr, 0, alen - 1);
+    reverse(arr, 0, n - 1);
+    reverse(arr, n, alen - 1);
+    return new String(arr);
+    
+  }
