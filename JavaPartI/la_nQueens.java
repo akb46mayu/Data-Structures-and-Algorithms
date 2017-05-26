@@ -7,7 +7,7 @@ public class Solution {
     return result;
   }
   private void nqHelper(int n, List<Integer> cur, List<List<Integer>> result) {
-    if (cur.size() == n) {
+    if (cur.size() == n) {  // use temp list's size to determine the row value
       result.add(new ArrayList<Integer>(cur));
       return;
     }
@@ -22,7 +22,7 @@ public class Solution {
   private boolean checkValid(List<Integer> cur, int col) {
     int row = cur.size();
     for (int i = 0; i < row; i++) {
-      if (cur.get(i) == col || Math.abs(cur.get(i) - col) == row - i) {
+      if (cur.get(i) == col || Math.abs(cur.get(i) - col) == row - i) {  // instead of using hash, simply check two coordinates
         return false;
       }
     }
