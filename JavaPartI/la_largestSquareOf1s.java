@@ -22,3 +22,35 @@ public class Solution {
     return result;
   }
 }
+
+///// same idea but use less spaces
+
+public class Solution {
+  public int largest(int[][] matrix) {
+    // Write your solution here.
+    int n = matrix.length;
+    if (n == 0) {
+      return 0;
+    }
+    int[][] dp = new int[n][n];
+    int maxval = 0;
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (i == 0 || j == 0) {
+          if (matrix[i][j] == 1) {
+            dp[i][j] = 1;
+          }
+        } else {
+          if (matrix[i][j] == 0) {
+            dp[i][j] = 0;
+          } else {
+            int temp = Math.min(dp[i - 1][j], dp[i][j - 1]);
+            dp[i][j] = Math.min(temp, dp[i - 1][j - 1]) + 1;
+          }
+        }
+        maxval = Math.max(dp[i][j], maxval);
+      }
+    }
+    return maxval;
+  }
+}
