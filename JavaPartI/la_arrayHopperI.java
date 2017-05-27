@@ -7,7 +7,7 @@ public class Solution {
     dp[0] = true;
     for (int i = 1; i <= n - 1; i++) {
       for (int k = 0; k <= i - 1; k++) {
-        dp[i] = false;
+        dp[i] = false; // we do not need this
         if (dp[k] == true && array[k] + k >= i) {
           dp[i] = true;
           break;
