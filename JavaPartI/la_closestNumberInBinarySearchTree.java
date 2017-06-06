@@ -33,3 +33,25 @@ public class Solution1 {  // my method using recursion
     }
   }
 }
+///
+public class Solution2 {
+  public int closest(TreeNode root, int target) {
+    // Write your solution here.
+    int res = root.key;
+    while (root != null) {
+      if (root.key == target) {
+        return target;
+      } else {
+        if (Math.abs(res - target) > Math.abs(root.key - target)) {
+          res = root.key;
+        }
+        if (root.key < target) {
+          root = root.right;
+        } else {
+          root= root.left;
+        }
+      }
+    }
+    return res;
+  }
+}
