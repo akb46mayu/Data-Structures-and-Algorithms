@@ -23,6 +23,6 @@ public class Solution {
     int sumLeft = maxSubSum(root.left, globalmax);
     int sumRight = maxSubSum(root.right, globalmax);
     globalmax[0] = Math.max(globalmax[0], sumLeft + sumRight + root.key);
-    return Math.max(0, root.key + Math.max(sumLeft, sumRight));
+    return Math.max(0, root.key + Math.max(sumLeft, sumRight)); // make the return value always positive
   }
 }
