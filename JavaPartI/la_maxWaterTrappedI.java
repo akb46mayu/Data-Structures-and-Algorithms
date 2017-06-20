@@ -22,3 +22,30 @@ public class Solution {    // use two dp arrays with O(n) extra space, but easy 
     return maxsum;
   }
 }
+
+
+//////////////////////////////////////////////////
+public class Solution2 {   // greedy algorithm  space is O(1)
+  public int maxTrapped(int[] array) {
+    // Write your solution here.
+    int n = array.length;
+    if (n <= 2) {
+      return 0;
+    }
+    int i = 0, j = n - 1;
+    int maxsum = 0;
+    int leftmax = array[0], rightmax = array[n - 1];
+    while (i < j) {
+      if (leftmax < rightmax) {
+        i++;
+        maxsum += Math.max(0, leftmax - array[i]);
+        leftmax = Math.max(leftmax, array[i]);
+      } else {
+        j--;
+        maxsum += Math.max(0, rightmax - array[j]);
+        rightmax = Math.max(rightmax, array[j]);
+      }
+    }
+    return maxsum;
+  }
+}
