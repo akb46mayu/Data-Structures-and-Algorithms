@@ -6,7 +6,7 @@ public class Solution {
     int n = array.length;
     for (int i = 0; i <= n; i++) {
       int curh = (i == n ? 0 : array[i]);
-      while (!stack.isEmpty() && array[stack.peekFirst()] > curh) {  // >- curh also works
+      while (!stack.isEmpty() && array[stack.peekFirst()] > curh) {  // >= curh also works
         int height = array[stack.pollFirst()];
         int left = (stack.isEmpty() ? -1 : stack.peekFirst());
         res = Math.max(res, (i - left - 1) * height);
