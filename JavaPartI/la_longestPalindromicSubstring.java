@@ -39,3 +39,34 @@ public class Solution {
     return res;
   }
 }
+
+/////////////////////////////////////////////////////
+public class Solution {
+  public String longestPalindrome(String s) {
+    int n = s.length();
+    int l;
+    int r;
+    int maxlen = 0;
+    String res = "";
+    for (int i = 0; i < 2 * n - 1; i++) {
+      if (i % 2 == 0) {
+        l = i / 2;
+        r = l;
+      } else {
+        l = i / 2;
+        r = l + 1;
+      }
+      while (l >= 0 && r <= n - 1 && s.charAt(l) == s.charAt(r)) {
+        l--;
+        r++;
+      }
+      l++;
+      r--;
+      if (r - l + 1 > maxlen) {
+        res = s.substring(l, r + 1);
+        maxlen = r - l + 1;
+      }
+    }
+    return res;
+  }
+}
