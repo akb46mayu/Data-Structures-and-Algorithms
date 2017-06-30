@@ -38,3 +38,13 @@ public class Solution {
     return root;
   }
 }
+////// the other way of using findsmallest
+
+private TreeNode findSmallest(TreeNode root) {
+    TreeNode par = root;
+    while(root != null) {
+      par = root;
+      root = root.left;
+    }
+    return par;
+  }  
