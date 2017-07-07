@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution {   // compare adjacent two elements
   public int[] dedup(int[] array) {
     // Write your solution here.
     if (array.length <= 1) {
@@ -6,7 +6,7 @@ public class Solution {
     }
     int i = 0;
     for (int j = 1; j < array.length; j ++) {
-      if (i == -1 || array[j] != array[i]) {
+      if (i == -1 || array[j] != array[i]) {   
         array[++i] = array[j];
       } else {
         while(j < array.length && array[j] == array[i]) {
@@ -30,7 +30,7 @@ public class Solution {
       return array;
     }
     int i = 0;
-    for(int j = 1; j < n; j++) {
+    for(int j = 1; j < n; j++) {   // compare cur and latest ele in the 'stack'
       if(array[j] != array[j - 1]) {
       	array[++i] = array[j];
       } else {
