@@ -18,3 +18,22 @@ public class Solution {
     }
   }
 }
+//////
+
+public class Solution {
+  public void rotate(int[][] matrix) {
+    // Write your solution here.
+    int n = matrix.length;
+    int i = -1;
+    for (int l = n; l > 0; l = l - 2) {
+      i = i + 1;
+      for (int k = 0; k < l - 1; k++) {
+        int temp = matrix[i + l - 1 - k][i];
+        matrix[i + l - 1 - k][i] = matrix[i + l - 1][i + l - 1 - k];
+        matrix[i + l - 1][i + l - 1 - k] = matrix[i + k][i + l -1];
+        matrix[i + k][i + l - 1] = matrix[i][i + k];
+        matrix[i][i + k] = temp;
+      }
+    }
+  }
+}
