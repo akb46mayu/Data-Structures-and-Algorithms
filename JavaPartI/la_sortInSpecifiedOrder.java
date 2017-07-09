@@ -35,7 +35,7 @@ public class Solution {
     return array;
   }
   
-  private void IntegerToInt(Integer[] array, int[] arr) {
+  private void IntegerToInt(Integer[] array, int[] arr) {  // this is used to save space
     for(int i = 0; i < array.length; i++) {
       arr[i] = array[i];
     }
