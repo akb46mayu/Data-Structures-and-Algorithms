@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution {   // use position as physical meanings
   public int minCost(int[] stones) {
     // Write your solution here.
     int n = stones.length;
