@@ -36,3 +36,41 @@ public class Solution {  // dfs
     return dupNode;
   }
 }
+
+////// BFS
+public class Solution2 {
+  public List<GraphNode> copy(List<GraphNode> graph) {
+    // Write your solution here.
+    Map<GraphNode, GraphNode> hmap = new HashMap<>();
+    List<GraphNode> res = new ArrayList<>();
+    for (GraphNode node : graph) {
+      if (!hmap.containsKey(node)) {
+        copyHelper(node, res, hmap);
+      }
+    }
+    return res;
+  }
+  
+  private void copyHelper(GraphNode node, List<GraphNode> res, Map<GraphNode, GraphNode> hmap) {
+    // assume node has not been visited
+    Queue<GraphNode> q = new LinkedList<>();
+    q.offer(node);
+    while (!q.isEmpty()) {
+      int size = q.size();
+      for (int i = 0; i < size; i++) {
+        GraphNode popnode = q.poll();
+        if (!hmap.containsKey(popnode)) {
+          hmap.put(popnode, new GraphNode(popnode.key));
+        }
+        for (GraphNode nbh : popnode.neighbors) {
+          if (!hmap.containsKey(nbh)) {
+            hmap.put(nbh, new GraphNode(nbh.key));
+            q.offer(nbh);
+          }
+          hmap.get(popnode).neighbors.add(hmap.get(nbh));
+        }
+        res.add(hmap.get(popnode));
+      }
+    }
+  }
+}
