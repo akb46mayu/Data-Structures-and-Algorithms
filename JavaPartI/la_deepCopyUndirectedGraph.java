@@ -36,6 +36,33 @@ public class Solution {  // dfs
     return dupNode;
   }
 }
+// dfs way 2 no return val
+public class Solution {
+  public List<GraphNode> copy(List<GraphNode> graph) {
+    // Write your solution here.
+    Map<GraphNode, GraphNode> hmap = new HashMap<>();
+    List<GraphNode> res = new ArrayList<>();
+    for (GraphNode node : graph) {
+      if (!hmap.containsKey(node)) {
+        copyDfs(node, res, hmap);
+      }
+    }
+    return res;
+  }
+  
+  private void copyDfs(GraphNode node, List<GraphNode> res, Map<GraphNode, GraphNode> hmap) {
+    // assume node has not been visited
+    if (hmap.containsKey(node)) {
+      return;
+    }
+    hmap.put(node, new GraphNode(node.key));
+    for (GraphNode nbh : node.neighbors) {
+      copyDfs(nbh, res, hmap);
+      hmap.get(node).neighbors.add(nbh); // copy all the nbhs
+    }
+    res.add(hmap.get(node));
+  }
+}
 
 ////// BFS
 public class Solution2 {
