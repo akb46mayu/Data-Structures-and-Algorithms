@@ -8,7 +8,7 @@
 *   }
 * }
 */
-public class Solution {
+public class Solution {  // dfs
   public List<GraphNode> copy(List<GraphNode> graph) {
     // Write your solution here.
     if (graph == null) {
