@@ -34,3 +34,30 @@ public class Solution {
     return dummy.next;
   }
 }
+////  way 2 tiny differnet logic as follows:
+public class Solution {
+  public RandomListNode copy(RandomListNode head) {
+    // Write your solution here.
+    if (head == null) {
+      return null;
+    }
+    RandomListNode dummy = new RandomListNode(0);
+    RandomListNode cur = dummy;
+    Map<RandomListNode, RandomListNode> hmap = new HashMap<>();
+    while (head != null) {
+      if (!hmap.containsKey(head)) {
+        hmap.put(head, new RandomListNode(head.value));
+      }
+      if (head.random != null && !hmap.containsKey(head.random)) {
+        hmap.put(head.random, new RandomListNode(head.random.value));
+      }
+      cur.next = hmap.get(head);
+      if (head.random != null) {
+        cur.next.random = hmap.get(head.random);
+      }
+      cur = cur.next;
+      head = head.next;
+    }
+    return dummy.next;
+  }
+}
