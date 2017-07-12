@@ -48,3 +48,27 @@ public class Solution2 {   // use length as phytsical meanings
     return dp[1][n];
   }
 }
+/////  by simplifing the previous logic we have
+public class Solution {
+  public int minCost(int[] stones) {
+    // Write your solution here.
+    int n = stones.length;
+    int[][] dp = new int[n + 1][n + 1];
+    int[] sum = new int[n + 1];
+    for (int j = 1; j <= n; j++) {
+      sum[j] = sum[j - 1] + stones[j - 1];
+      for (int i = j; i >= 1; i--) {
+        if (j - i >= 1) {   // combined j - i >= 2 and j - i == 1 cases
+          dp[i][j] = Integer.MAX_VALUE;
+          for (int k = i; k<= j - 1; k++) {
+            dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k + 1][j]);
+          }
+          dp[i][j] = dp[i][j] + sum[j] - sum[i - 1];
+        } else {
+          dp[i][j] = 0;
+        }
+      }
+    }
+    return dp[1][n];
+  }
+}
