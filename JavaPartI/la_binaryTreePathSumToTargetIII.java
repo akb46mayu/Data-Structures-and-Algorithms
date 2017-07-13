@@ -37,7 +37,7 @@ public class Solution {
     return false;
   }
 }
-/// way 2:
+/// way 2: (return value is void)
 public class Solution {
   public boolean exist(TreeNode root, int target) {
     // Write your solution here.
