@@ -37,3 +37,32 @@ public class Solution {
     return false;
   }
 }
+/// way 2:
+public class Solution {
+  public boolean exist(TreeNode root, int target) {
+    // Write your solution here.
+    boolean[] res = {false};
+    Set<Integer> hset = new HashSet<>();
+    hset.add(0);
+    checkSol(root, res, 0, hset, target);
+    return res[0];
+  }
+  
+  private void checkSol(TreeNode root, boolean[] res, int prevsum, Set<Integer> hset, int target) {
+    if (root == null) {
+      return;
+    }
+    int cursum = prevsum + root.key;
+    if (hset.contains(cursum - target)) {
+      res[0] = true;
+      return;
+    }
+    boolean newval = hset.add(cursum);
+    checkSol(root.left, res, cursum, hset, target);
+    checkSol(root.right, res, cursum, hset, target);
+    if (newval) {
+      hset.remove(cursum);
+    }
+    return;
+  }
+}
