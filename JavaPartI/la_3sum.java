@@ -13,7 +13,7 @@ public class Solution {
         int subsum = array[left] + array[right];
         if (subsum == target - array[i]) {
           res.add(Arrays.asList(array[i], array[left], array[right]));
-          left++;
+          left++; // without this line, you will get infinite loop
           while (left < right && array[left] == array[left - 1]) {
             left++;
           }
