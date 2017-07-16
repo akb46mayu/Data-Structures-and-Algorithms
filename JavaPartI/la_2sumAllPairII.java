@@ -19,3 +19,28 @@ public class Solution {
     return res;
   }
 }
+
+
+//// way 2: not using get's return value
+public class Solution {
+  public List<List<Integer>> allPairs(int[] array, int target) {
+    // Write your solution here.
+    List<List<Integer>> res = new ArrayList<>();
+    Map<Integer, Integer> hmap = new HashMap<>();
+    for (int i = 0; i < array.length; i++) {
+      if (hmap.containsKey(target - array[i])) { // update the res
+        if (array[i] * 2 == target && hmap.get(array[i]) == 1) {
+          res.add(Arrays.asList(array[i], array[i]));
+        } else if (array[i] * 2 != target && !hmap.containsKey(array[i])) {
+          res.add(Arrays.asList(target - array[i], array[i]));
+        }
+      }
+      if (!hmap.containsKey(array[i])) {
+        hmap.put(array[i], 0);
+      }
+      int count = hmap.get(array[i]);
+      hmap.put(array[i], count + 1);
+    }
+    return res;
+  }
+}
