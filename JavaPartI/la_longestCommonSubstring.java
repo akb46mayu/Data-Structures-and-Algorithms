@@ -52,3 +52,30 @@ public class Solution { // brute force way 2, use offset
     return sb.toString();
   }
 }
+
+////  dp solution O(mn)
+public class Solution2 {
+  public String longestCommon(String s, String t) {
+    // Write your solution here.
+    StringBuilder sb = new StringBuilder();
+    int n1 = s.length();
+    int n2 = t.length();
+    int[][] dp = new int[n1 + 1][n2 + 1];
+    int maxlen = 0;
+    int end = -1;
+    int start = 0;
+    for (int i = 1; i < n1 + 1; i++) {
+      for (int j = 1; j < n2 + 1; j++) {
+        if (s.charAt(i - 1) == t.charAt(j - 1)) {
+          dp[i][j] = dp[i - 1][j - 1] + 1;
+          if (dp[i][j] > maxlen) {
+            end = j - 1;
+            maxlen = dp[i][j];
+            start = j - maxlen; 
+          }
+        }
+      }
+    }
+    return t.substring(start, end + 1);
+  }
+}
