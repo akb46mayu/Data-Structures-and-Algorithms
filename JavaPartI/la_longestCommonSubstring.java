@@ -24,3 +24,31 @@ public class Solution { // brute force T = O(mnp)
     return out;
   }
 }
+
+
+public class Solution { // brute force way 2, use offset
+  public String longestCommon(String s, String t) {
+    // Write your solution here.
+    StringBuilder sb = new StringBuilder();
+    int n1 = s.length();
+    int n2 = t.length();
+    int maxlen = 0;
+    for (int i = 0; i < n1; i++) {
+      for (int j = 0; j < n2; j++) {
+        int k = 0;
+        int templen = 0;
+        StringBuilder tempsb = new StringBuilder();
+        while (i + k < n1 && j + k < n2 && s.charAt(i + k) == t.charAt(j + k)) {
+          tempsb.append(s.charAt(i + k));
+          k++;
+          templen++;
+        }
+        if (templen > maxlen) {
+          sb = tempsb;
+          maxlen = templen;
+        }
+      }
+    }
+    return sb.toString();
+  }
+}
