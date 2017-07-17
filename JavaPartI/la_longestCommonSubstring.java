@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution { // brute force T = O(mnp)
   public String longestCommon(String s, String t) {
     // Write your solution here.
     int n1 = s.length(), n2 = t.length();
