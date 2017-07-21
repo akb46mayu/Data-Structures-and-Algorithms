@@ -16,7 +16,7 @@ public class Solution {
     }
     int aval = as + k / 2 - 1 < a.length ? a[as + k / 2 - 1] : Integer.MAX_VALUE;
     int bval = bs + k / 2 - 1 < b.length ? b[bs + k / 2 - 1] : Integer.MAX_VALUE;
-    if (aval < bval) {
+    if (aval < bval) {  // <= also works
       return findKth(a, as + k / 2, b, bs, k - k / 2);
     } else {
       return findKth(a, as, b, bs + k / 2, k - k / 2);
