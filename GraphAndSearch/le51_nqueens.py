@@ -57,3 +57,38 @@ class Solution(object):
             if col - row == c - r or col + row == c + r:
                 return True
         return False
+
+ ### way 2 according to java's ver      
+ class Solution2(object):
+    def solveNQueens(self, n):
+        """
+        :type n: int
+        :rtype: List[List[str]]
+        """
+        res = []
+        temp = []
+        self.dfs(n, res, temp)
+        return res
+    
+    def dfs(self, n, res, temp):
+        if n == len(temp):
+            tempmatrix = []
+            for i in xrange(n):
+                temprow = ['.'] * n
+                temprow[temp[i]] = 'Q'
+                newstr = ''.join(temprow)
+                tempmatrix.append(newstr) 
+            res.append(tempmatrix)
+            return
+        for i in xrange(n):
+            if (not self.attack(temp, i)):
+                temp.append(i)
+                self.dfs(n, res, temp)
+                temp.pop()
+                
+    def attack(self, temp, j):
+        newrow = len(temp)
+        for idx, val in enumerate(temp):
+            if val == j or abs(j - val) == (newrow - idx):
+                return True
+        return False
