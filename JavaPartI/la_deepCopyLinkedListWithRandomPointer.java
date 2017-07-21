@@ -83,11 +83,7 @@ public class Solution {
           	}
             slow = slow.next.next;
         }
-        
-       
-        
         return splitList(cur);
-       
     }
     
     private RandomListNode splitList(RandomListNode head) {
@@ -98,10 +94,8 @@ public class Solution {
             head = head.next;
             if (temp.next != null) {
                 temp.next = head.next;
-            }
-            
+            } 
         }
         return newnode;
     }
-
 }
