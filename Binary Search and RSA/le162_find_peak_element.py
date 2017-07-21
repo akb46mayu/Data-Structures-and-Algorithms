@@ -22,7 +22,7 @@ class Solution(object): # I prefer to this solution (no duplicates)
         n = len(nums) - 1
         start, end = 0, n
         
-        while start <= end:
+        while start <= end:  # this can also be start < end, it does not matter
             mid = (start + end)/2
             if (mid==0 or nums[mid] > nums[mid-1]) and (mid == n or nums[mid] > nums[mid+1]):
                 return mid
