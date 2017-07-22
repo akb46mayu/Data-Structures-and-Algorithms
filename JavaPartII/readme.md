@@ -1,1 +1,1 @@
-
+// for problems without OJ
