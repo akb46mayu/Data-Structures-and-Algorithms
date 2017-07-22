@@ -83,7 +83,14 @@ public class Solution {
       return right;
     }
   }
-  
-  
-  
+}
+/// way3 for the inside logic, you can also use:
+
+int left = idx - 1, right = idx;
+for (int i = 0; i < k; i++) {
+  if (left == -1 || (right <= array.length - 1 && Math.abs(array[right] - target) < Math.abs(array[left] - target))) {
+    out[i] = array[right++];
+  } else {
+    out[i] = array[left--];
+  }
 }
