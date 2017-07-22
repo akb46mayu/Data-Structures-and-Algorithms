@@ -1,5 +1,5 @@
 
-/**
+/**    
  * class ListNode {
  *   public int value;
  *   public ListNode next;
@@ -8,7 +8,8 @@
  *     next = null;
  *   }
  * }
- */
+ */  
+//// see leet 234
 public class Solution {
   public boolean isPalindrome(ListNode head) {
     if (head == null) {
