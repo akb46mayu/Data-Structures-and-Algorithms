@@ -33,7 +33,25 @@ class Solution(object):
         if k > 1:
             result[0] = False
         return max(a1,a2) + 1
-    
+###
+class Solution(object):  # lai java converted
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        return self.balanceHelper(root) >= 0
+    def balanceHelper(self, root):
+        if root == None:
+            return 0
+        left = self.balanceHelper(root.left)
+        right = self.balanceHelper(root.right)
+        if left == - 1 or right == -1:
+            return -1
+        return -1 if abs(left - right) > 1 else max(left, right) + 1
+
+
+###
 class Solution2(object):
     def isBalanced(self, root):
         """
