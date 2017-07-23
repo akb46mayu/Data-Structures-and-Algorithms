@@ -45,3 +45,30 @@ class Solution(object):  #use two queues (roughly BFS), a little bit tricky, we 
                     newq.append(n.right)
             q = newq
         return result
+## way 2 (prefered)
+
+from collections import deque
+
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        res = []
+        q = deque()
+        if root == None:
+            return res
+        q.append(root)
+        while q:
+            myqsize = len(q)
+            levelres = []
+            for i in xrange(myqsize):
+                popnode = q.popleft()
+                levelres.append(popnode.val)
+                if popnode.left:
+                    q.append(popnode.left)
+                if popnode.right:
+                    q.append(popnode.right)
+            res.append(levelres)
+        return res
