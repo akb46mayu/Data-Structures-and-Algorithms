@@ -51,7 +51,6 @@ public class LRUCache {
             node.next = head;
             head = head.prev;   
         }
-
     }
     
     private void remove(Node node) {
@@ -62,7 +61,6 @@ public class LRUCache {
         if (node.next != null) {
             node.next.prev = node.prev;
         }
-        
         if (node == head) {
             head = head.next;
         }
