@@ -2,14 +2,9 @@ public class Solution<K, V> {
   static class Node<K, V> {
     K key;
     V val;
-    int limit;
     Node<K, V> prev;
     Node<K, V> next;
     Node(K key, V val) {
-      this.key = key;
-      this.val = val;
-    }
-    void update(K key, V val) {
       this.key = key;
       this.val = val;
     }
@@ -33,9 +28,8 @@ public class Solution<K, V> {
     } else if (hmap.size() < limit) {
       node = new Node<K, V>(key, value);
     } else {
-      node = tail;
-      remove(node);
-      node.update(key, value);
+      node = new Node<K, V>(key, value);
+      remove(tail);
     }
     moveToHead(node);
   }
@@ -51,7 +45,7 @@ public class Solution<K, V> {
     }
   }
   
-  private Node<K, V> moveToHead(Node<K, V> node) {
+  private void moveToHead(Node<K, V> node) {
     // update hmap, move cur node to the head
     hmap.put(node.key, node);
     if (head == null) {
@@ -61,17 +55,15 @@ public class Solution<K, V> {
       head.prev = node;
       head = node;
     }
-    return node;
   }
   
-  private Node<K, V> remove(Node<K, V> node) {
-    // remove a node
+  private void remove(Node<K, V> node) {
     hmap.remove(node.key);
     if (node.prev != null) {
       node.prev.next = node.next;
     }
     if (node.next != null) {
-      node.next.next = node.prev;
+      node.next.prev = node.prev;
     }
     if (node == head) {
       head = head.next;
@@ -80,6 +72,5 @@ public class Solution<K, V> {
       tail = tail.prev;
     }
     node.next = node.prev = null;
-    return node;
   }
 }
