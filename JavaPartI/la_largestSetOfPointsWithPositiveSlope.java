@@ -18,7 +18,7 @@ public class Solution {
       } else if (p1.y < p2.y) {
         return -1;
       } else if (p1.y > p2.y) {
-        return -1;
+        return 1;
       }
       return 0;
     }
