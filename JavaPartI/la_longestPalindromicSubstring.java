@@ -70,3 +70,6 @@ public class Solution {
     return res;
   }
 }
+// the if else blocks for l, r can also be condensed as:
+int l = i / 2;
+int r = i % 2 == 0 ? l : l + 1;
