@@ -12,38 +12,35 @@ public class Solution {
   public int most(Point[] points) {
     // Write your solution here.
     int n = points.length;
+    if (n <= 1) {
+      return n;
+    }
     int res = 0;
-    
     for (int i = 0; i < n - 1; i++) {
-      int same = 0;
-      int samex = 0;
-      Point base = points[i];
-      int slopesum = 0;
       Map<Double, Integer> hmap = new HashMap<>();
+      int samee = 0;
+      int samexe = 0;
+      int basex = points[i].x, basey = points[i].y;
+      int tempmax = 0;
       for (int j = i + 1; j < n; j++) {
-        Point temp = points[j];
-        if (base.x == temp.x && base.y == temp.y) { // dup
-          same = (same == 0 ? 2 : same + 1);
-        } else if (base.x == temp.x) {
-          samex = (samex == 0 ? 2 : samex + 1);
+        int dx = points[j].x - basex;
+        int dy = points[j].y - basey;
+        if (dx == 0 && dy == 0) { // dup case
+          samee++;
+        } else if (dx == 0) { // same x
+          samexe++;
         } else {
-          double slope = (temp.y - base.y - 0.0) / (temp.x - base.x);
-          if (!hmap.containsKey(slope)) {
-            hmap.put(slope, 2);
-          } else {
+          double slope = 1.0 * dy / dx;
+          if (hmap.containsKey(slope)) {
             hmap.put(slope, hmap.get(slope) + 1);
+          } else {
+            hmap.put(slope, 1);
           }
-          slopesum = Math.max(slopesum, hmap.get(slope));
+          tempmax = Math.max(tempmax, hmap.get(slope));
         }
       }
-      res = Math.max(res, Math.max(subSum(slopesum, same), subSum(samex, same)));
+      res = Math.max(res, Math.max(samexe, tempmax) + samee + 1);
     }
     return res;
-  }
-  private int subSum(int a, int b) {
-    if (a >= 1 && b >= 1) {
-      return a + b - 1;
-    } 
-    return a + b;
-  }
+  }  
 }
