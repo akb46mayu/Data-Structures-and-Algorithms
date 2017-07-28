@@ -47,3 +47,24 @@ public class Solution {
         return tag == 1 ? res : -1;
     }
 }
+
+
+////////////////////////////// (not using hash, use an int array)
+public class Solution2 {
+    public int firstUniqChar(String s) {
+        if (s == null || s.length() == 0) {
+            return -1;
+        }
+        int[] dict = new int[256];
+        for (char ch : s.toCharArray()) {
+            dict[ch]++;
+        }
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            if (dict[s.charAt(i)] == 1) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
