@@ -11,6 +11,8 @@ Follow up:
 What if the inputs contain unicode characters? How would you adapt your solution to such case?
 */
 
+
+// follow up for unicode characters
 public class Solution {
     public boolean isAnagram(String s, String t) {
         
