@@ -10,7 +10,7 @@ return 2.
 Note: You may assume the string contain only lowercase letters.
 
 */
-
+// my initial solution, can deal with any chars not only 256 cases.
 class Point {
     int idx;
     int count;
