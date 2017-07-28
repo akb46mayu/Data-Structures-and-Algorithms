@@ -11,6 +11,35 @@ Follow up:
 What if the inputs contain unicode characters? How would you adapt your solution to such case?
 */
 
+// ascII input
+public class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+        if ((s == null && t != null) || (s != null && t == null)) {
+            return false;
+        }
+        if (s == null && t == null) {
+            return true;
+        }
+        int lens = s.length();
+        int lent = t.length();
+        if (lens != lent) {
+            return false;
+        }
+        int[] dict = new int[256];
+        for (char ch : t.toCharArray()) {
+            dict[ch]++;
+        }
+        for (char ch : s.toCharArray()) {
+            dict[ch]--;
+            if (dict[ch] < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 
 // follow up for unicode characters
 public class Solution {
