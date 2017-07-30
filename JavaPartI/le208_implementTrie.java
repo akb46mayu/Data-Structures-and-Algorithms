@@ -1,3 +1,60 @@
+//// ascII version
+class TrieNode {
+    TrieNode[] children = new TrieNode[26]; 
+    boolean isWord;
+    TrieNode() {
+
+    }   
+}
+public class Trie {
+    private TrieNode root; 
+    /** Initialize your data structure here. */
+    public Trie() {
+        root = new TrieNode();
+    }
+    
+    /** Inserts a word into the trie. */
+    public void insert(String word) {
+        TrieNode cur = root;
+        for (char ch : word.toCharArray()) {
+            if (cur.children[ch - 'a'] != null) {
+                cur = cur.children[ch - 'a'];
+            } else {
+                TrieNode newnode = new TrieNode();
+                cur.children[ch - 'a'] = newnode;
+                cur = newnode;
+            }
+        }
+        cur.isWord = true;
+    }
+    
+    /** Returns if the word is in the trie. */
+    public boolean search(String word) {
+        TrieNode cur = root;
+        for (char ch : word.toCharArray()) {
+            if (cur.children[ch - 'a'] != null) {
+                cur = cur.children[ch - 'a'];
+            } else {
+                return false;
+            }
+        }
+        return cur.isWord;
+    }
+    
+    /** Returns if there is any word in the trie that starts with the given prefix. */
+    public boolean startsWith(String prefix) {
+        TrieNode cur = root;
+        for (char ch : prefix.toCharArray()) {
+            if (cur.children[ch - 'a'] != null) {
+                cur = cur.children[ch - 'a'];
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 // hashmap version
 class TrieNode {
     Map<Character, TrieNode> children = new HashMap<>(); 
