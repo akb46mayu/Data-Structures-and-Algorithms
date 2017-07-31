@@ -43,7 +43,7 @@ public class Solution {
 }
 
 
-
+/// way 2 (recursion with return value)
 public class Solution {
   public int[] mergeSort(int[] array) {
     // Write your solution here.
