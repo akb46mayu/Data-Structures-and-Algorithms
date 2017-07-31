@@ -1,25 +1,22 @@
 
-
+// way 1
 public class Solution {
   public int[] solve(int[] array) {
     // Write your solution here.
-    if (array == null){
+    if (array == null || array.length == 0) {
       return array;
     }
-    
     int n = array.length;
-    for (int i = 0; i < n; i++){
-      int minval = Integer.MAX_VALUE;
-      int idx = i;
-      for (int j = i; j < n; j++){
-        if (array[j] < minval){
-          minval = array[j];
-          idx = j;
+    for (int i = 0; i < n - 1; i++) {
+      int glbmin = i;
+      for (int j = i + 1; j < n; j++) {
+        if (array[j] < array[glbmin]) {
+          glbmin = j;
         }
       }
-      int temp = array[i];
-      array[i] = array[idx];
-      array[idx] = temp;
+      int temp = array[glbmin];
+      array[glbmin] = array[i];
+      array[i] = temp;
     }
     return array;
   }
@@ -27,6 +24,7 @@ public class Solution {
 
 
 
+// way 2
 public class Solution2 {
   public int[] solve(int[] array) {
     // Write your solution here.
