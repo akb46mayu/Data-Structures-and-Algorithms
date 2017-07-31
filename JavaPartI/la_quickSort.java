@@ -49,3 +49,19 @@ public class QuickSort {
 	}
 	
 }
+/// second way of partition
+  private int partition(int[] arr, int left, int right) {
+    int pidx = randNum(left, right);
+    int pval = arr[pidx];
+    swap(arr, right, pidx);
+    int i = left, j = right - 1;
+    while (i <= j) {
+      if (arr[i] < pval) {
+        i++;
+      } else {
+        swap(arr, i, j--);
+      }
+    }
+    swap(arr, i, right);
+    return i;
+  }
