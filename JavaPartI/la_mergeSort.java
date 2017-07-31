@@ -11,15 +11,15 @@ public class Solution {
     
   }
   private void mergeSort(int[] array, int[] helper, int left, int right){
-		if (left>=right){
-			return;
-		}
-		int mid = left + (right - left)/2;
-		mergeSort(array, helper, left, mid);
-		mergeSort(array, helper, mid+1, right);
-		merge(array, helper, left, mid, right);
-		
+	if (left>=right){
+		return;
 	}
+	int mid = left + (right - left)/2;
+	mergeSort(array, helper, left, mid);
+	mergeSort(array, helper, mid+1, right);
+	merge(array, helper, left, mid, right);
+		
+  }
   private void merge(int[] array, int[] helper, int left, int mid, int right){
       
       for (int i = left; i<= right; i++){
