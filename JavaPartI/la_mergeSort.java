@@ -44,45 +44,44 @@ public class Solution {
 
 
 
-public class Solution2 {
-   	  public int[] mergeSort(int[] array) {
-		    // Write your solution here.
-		    if (array == null || array.length == 0) {
-		      return array;
-		    }
-		    return mergeSortHelper(array, 0, array.length - 1);
-		  }
-		  
-		  private int[] mergeSortHelper(int[] array, int left, int right) {
-		    if (left == right) {
-		      int[] out = new int[1];
-		      out[0] = array[left];
-		      return out;
-		    }
-		    int mid = left + (right - left)/2;
-		    int[] leftpart = mergeSortHelper(array, left, mid);
-		    int[] rightpart = mergeSortHelper(array, mid + 1, right);
-		    return merge(leftpart, rightpart);
-		  }
-		  
-		  private int[] merge(int[] leftpart, int[] rightpart) {
-		    int n1 = leftpart.length, n2 = rightpart.length;
-		    int[] out = new int[n1 + n2];
-		    int i = 0, j = 0, k = 0;
-		    while (i < n1 && j < n2) {
-		      if (leftpart[i] < rightpart[j]) {
-		        out[k++] = leftpart[i++];
-		      } else {
-		        out[k++] = rightpart[j++];
-		      }
-		    }
-		    
-		    while (i < n1) {
-		      out[k++] = leftpart[i++];
-		    }
-		    while (j < n2) {
-		      out[k++] = rightpart[j++];
-		    }
-		    return out;
-		  }
+public class Solution {
+  public int[] mergeSort(int[] array) {
+    // Write your solution here.
+    if (array == null || array.length == 0) {
+      return array;
+    }
+    return mergeHelper(array, 0, array.length - 1);
+  }
+  
+  
+  private int[] mergeHelper(int[] array, int left, int right) {
+    if (left == right) {
+      return new int[]{array[left]};
+    }
+    int mid = left + (right - left) / 2;
+    int[] arr1 = mergeHelper(array, left, mid);
+    int[] arr2 = mergeHelper(array, mid + 1, right);
+    return merge(arr1, arr2);
+  }
+  
+  private int[] merge(int[] arr1, int[] arr2) {
+    int len1 = arr1.length, len2 = arr2.length;
+    int i = 0, j = 0, k = 0;
+    int[] res = new int[len1 + len2];
+    while (i < len1 && j < len2) {
+      if (arr1[i] < arr2[j]) {
+        res[k++] = arr1[i++];
+      } else {
+        res[k++] = arr2[j++];
+      }
+    }
+    while (i != len1) {
+      res[k++] = arr1[i++];
+      
+    }
+    while (j != len2) {
+      res[k++] = arr2[j++];
+    }
+    return res;
+  }
 }
