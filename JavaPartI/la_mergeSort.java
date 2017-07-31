@@ -11,7 +11,7 @@ public class Solution {
     
   }
   private void mergeSort(int[] array, int[] helper, int left, int right){
-	if (left>=right){
+	if (left==right){
 		return;
 	}
 	int mid = left + (right - left)/2;
