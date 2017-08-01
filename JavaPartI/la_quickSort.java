@@ -24,19 +24,17 @@ public class QuickSort {
 		array[right] = temp;
 	}
 	private int partition(int[] array, int left, int right){
-	    int pivotidx = pivotidxFunc(left, right);
+	    int pivotidx = randNum(left, right);
 	    int pivotval = array[pivotidx];
 	    swap(array, right, pivotidx);
-	     // i is the idx all smaller values are before the idx
-	    int newi = left;
-	    for(int i=left; i<= right; i++){
-	    	if (array[i] < pivotval){
-	    		swap(array, newi, i);
-	    		newi++;
-	    	}
+	    int i = left;
+	    for (int j = left; j < right; j++) {
+	      if (array[j] < pivotval) {
+		swap(array, i++, j);
+	      }
 	    }
-	    swap(array, newi, right);
-	    return newi;
+	    swap(array, i, right);
+	    return i;
 	}
 	private int pivotidxFunc(int left, int right){
 		return left + (int)(Math.random()*(right - left + 1)); //check the meaning of this
