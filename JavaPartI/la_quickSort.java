@@ -28,7 +28,7 @@ public class QuickSort {
 	    int pivotval = array[pivotidx];
 	    swap(array, right, pivotidx);
 	    int i = left;
-	    for (int j = left; j < right; j++) {
+	    for (int j = left; j < right; j++) {  // j <= right is also ok
 	      if (array[j] < pivotval) {
 		swap(array, i++, j);
 	      }
