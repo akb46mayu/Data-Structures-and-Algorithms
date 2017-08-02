@@ -13,8 +13,28 @@ public class Solution {
     return b % 2 == 0 ? half * half: a * half * half;
   }
 }
+///////////////////
+
+public class Solution {
+  public long power(int a, int b) {
+    // Write your solution here
+    if (a == 0) {
+      return 0;
+    }
+    if (b == 0) {
+      return 1;
+    }
+    long temp = power(a, b / 2);
+    if (b % 2 == 0) {
+      return temp * temp;
+    } else {
+      return temp * temp * a;
+    }
+  }
+}
 
 
+///////////////////
 public class Solution { // different coding style, 
   public long power(int a, int b) {
     // Write your solution here
