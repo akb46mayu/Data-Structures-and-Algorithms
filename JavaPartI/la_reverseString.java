@@ -22,23 +22,22 @@ public class Solution {
 public class Solution {
   public String reverse(String input) {
     // Write your solution here.
-    if (input == null || input.length() == 0) {
+    if(input.length() == 0) {
       return input;
     }
-    char[] arr = input.toCharArray(); 
-    reverseHelper(arr, 0, arr.length - 1);
+    char[] arr = input.toCharArray();
+    revHelper(arr, 0, input.length() - 1);
     return new String(arr);
   }
-  private void reverseHelper(char[] arr, int left, int right) {
+  
+  private void revHelper(char[] arr, int left, int right) {
     if (left >= right) {
       return;
     }
-    swap(arr, left, right);
-    reverseHelper(arr, left + 1, right - 1);
-  }
-  private void swap(char[] arr, int left, int right) {
     char temp = arr[left];
     arr[left] = arr[right];
     arr[right] = temp;
+    revHelper(arr, left + 1, right - 1);
   }
 }
+
