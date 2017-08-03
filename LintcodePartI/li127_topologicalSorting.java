@@ -9,9 +9,6 @@ Find any topological order for the given graph.
 
 You can assume that there is at least one topological order in the graph.
 
-Have you met this question in a real interview? Yes
-Clarification
-Learn more about representation of graphs
 
 Example
 For graph as follow:
