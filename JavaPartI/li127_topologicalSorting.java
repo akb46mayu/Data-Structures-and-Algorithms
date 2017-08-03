@@ -74,3 +74,42 @@ public class Solution {
 }
 
 
+//// USE dfs + set
+public class Solution {
+    /**
+     * @param graph: A list of Directed graph node
+     * @return: Any topological order for the given graph.
+     */    
+    public ArrayList<DirectedGraphNode> topSort(ArrayList<DirectedGraphNode> graph) {
+        // write your code here
+        ArrayList<DirectedGraphNode> res = new ArrayList<DirectedGraphNode>();
+        Deque<DirectedGraphNode> stack = new  LinkedList<DirectedGraphNode>();
+        Set<DirectedGraphNode> hset = new HashSet<>();
+        for (DirectedGraphNode node : graph) {
+            if (!hset.contains(node)) {
+                tsortHelper(node, hset, stack);
+            }
+        }
+        while (!stack.isEmpty()) {
+            res.add(stack.pollFirst());
+        }
+        return res;
+    }
+    
+    private void tsortHelper(DirectedGraphNode node, Set<DirectedGraphNode> hset, Deque<DirectedGraphNode> stack) {
+      if (hset.contains(node)) {
+          return;
+      }
+      for (DirectedGraphNode nei : node.neighbors) {
+          if (!hset.contains(nei)) {
+              
+              tsortHelper(nei, hset, stack);
+              hset.add(nei);
+              //stack.offerFirst(nei);
+          }
+      }
+      stack.offerFirst(node);
+      hset.add(node);
+    }
+}
+
