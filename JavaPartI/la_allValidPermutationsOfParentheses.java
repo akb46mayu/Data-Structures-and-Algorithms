@@ -23,3 +23,38 @@ public class Solution {
   }
   
 }
+///// way 2, use string builder
+
+public class Solution {
+  public List<String> validParentheses(int n) {
+    // Write your solution here.
+    List<String> res = new ArrayList<>();
+    StringBuilder sb = new StringBuilder();
+    isParen(n, 0, 0, sb, res);
+    return res;
+    
+  }
+  
+  private void isParen(int n, int left, int right, StringBuilder sb, List<String> res) {
+    if (sb.length() == 2 * n) {
+       if (left * 2 == sb.length()) {
+         res.add(sb.toString());
+       }
+       return;
+    }
+    
+    if (left >= right) {
+      isParen(n, left + 1, right, sb.append('('), res);
+    } else {
+      return;
+    }
+    sb.deleteCharAt(sb.length() - 1);
+    if (left > right) {
+      isParen(n, left, right + 1, sb.append(')'), res);
+    } else {
+      return;
+    }
+    sb.deleteCharAt(sb.length() - 1);
+  }
+  
+}
