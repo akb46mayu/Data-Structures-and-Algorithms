@@ -102,10 +102,8 @@ public class Solution {
       }
       for (DirectedGraphNode nei : node.neighbors) {
           if (!hset.contains(nei)) {
-              
               tsortHelper(nei, hset, stack);
               hset.add(nei);
-              //stack.offerFirst(nei);
           }
       }
       stack.offerFirst(node);
