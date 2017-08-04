@@ -34,5 +34,38 @@ public class Solution {
     }
     spiralHelper(matrix, size - 2, offset + 1, result);
   }
-
 }
+
+/// iterative 
+public class Solution {
+  public List<Integer> spiral(int[][] matrix) {
+    // Write your solution here.
+    List<Integer> res = new ArrayList<>();
+    if (matrix.length == 0) {
+      return res;
+    }
+    int n = matrix.length; // at least one element
+    int edge = n;
+    for (int s = 0; s <= n / 2; s++) {
+      if (edge == 1) {
+        res.add(matrix[s][s]);
+        break;
+      }
+      for (int j = 0; j < edge - 1; j++) {
+        res.add(matrix[s][s + j]);
+      }
+      for (int i = 0; i < edge - 1; i++) {
+        res.add(matrix[s + i][s + edge - 1]);
+      }
+      for (int j = 0; j < edge - 1; j++) {
+        res.add(matrix[s + edge - 1][s + edge - 1- j]);
+      }
+      for (int i = 0; i < edge - 1; i++) {
+        res.add(matrix[s + edge - 1 - i][s]);
+      }
+      edge -= 2;    
+    }
+    return res;
+  }
+}
+
