@@ -1,4 +1,4 @@
-
+// mathematical solution
 public class Solution {
   public List<Integer> putChair(char[][] gym) {
     // write your solution here
@@ -28,3 +28,4 @@ public class Solution {
     return dlist.get(n / 2);
   } 
 }
+// bfs
