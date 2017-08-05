@@ -61,3 +61,50 @@ public class Solution {
         visited[x][y] = 0;
     }
 }
+
+/// way 2, this solution pruning more branches, and use recursion with return values.
+public class Solution {
+    public boolean exist(char[][] board, String word) {
+        int m = board.length;
+        if (m == 0 || word.length() == 0) {
+            return false;
+        }
+        int n = board[0].length;
+        boolean[] res = {false};
+        int[][] visited = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (existHelper(board, i, j, word, 0, visited)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    private boolean existHelper(char[][] board, int x, int y, String word, int level, int[][] visited) {
+        char ch = board[x][y];
+        if (ch != word.charAt(level)) {
+            return false;
+        }
+        if (level == word.length() - 1 && visited[x][y] == 0) {
+             return true;
+        } 
+        int m = board.length, n = board[0].length; 
+        visited[x][y] = 1;
+        int[] dx = {0, 0, -1, 1};
+        int[] dy = {-1, 1, 0, 0};
+        for (int k = 0; k < 4; k++) {
+            int newx = x + dx[k];
+            int newy = y + dy[k];
+            if (newx >= 0 && newx < m && newy >= 0 && newy < n && visited[newx][newy] == 0) {
+                if (existHelper(board, newx, newy, word, level + 1, visited)) {
+                    return true;
+                }
+            }
+        }
+        visited[x][y] = 0;
+        return false;
+    }
+    
+}
