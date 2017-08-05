@@ -18,7 +18,7 @@ word = "ABCB", -> returns false.
 
 */
 
-
+/// way 1: recursion without return values
 public class Solution {
     public boolean exist(char[][] board, String word) {
         int m = board.length;
