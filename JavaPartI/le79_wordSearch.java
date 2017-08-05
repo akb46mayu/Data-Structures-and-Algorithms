@@ -40,23 +40,14 @@ public class Solution {
     }
     
     private void existHelper(char[][] board, int x, int y, String word, int level, boolean[] res, int[][] visited) {
-        if (res[0] == true) {
-            return;
-        }
-        int m = board.length, n = board[0].length;
         char ch = board[x][y];
-       
-        if (level == word.length() - 1) {
+        if (res[0] == true || ch != word.charAt(level) || level == word.length() - 1) {
             if (ch == word.charAt(level) && visited[x][y] == 0) {
                  res[0] = true;
-                 
             }
             return;
         }
-        
-        if (ch != word.charAt(level)) {
-            return;
-        }
+        int m = board.length, n = board[0].length; 
         visited[x][y] = 1;
         int[] dx = {0, 0, -1, 1};
         int[] dy = {-1, 1, 0, 0};
@@ -65,10 +56,8 @@ public class Solution {
             int newy = y + dy[k];
             if (newx >= 0 && newx < m && newy >= 0 && newy < n && visited[newx][newy] == 0) {
                 existHelper(board, newx, newy, word, level + 1, res, visited);
-                
             }
         }
         visited[x][y] = 0;
     }
-    
 }
