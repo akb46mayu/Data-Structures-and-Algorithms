@@ -26,8 +26,8 @@ public class Solution {
     
   }
 }
-////////////////////////////////////////////
-public class Solution {
+//////////////////////////////////////////// non - recursion
+public class Solution2 {
   public List<Integer> preOrder(TreeNode root) {
     // Write your solution here.
     List<Integer> result = new ArrayList<Integer>();
