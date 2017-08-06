@@ -8,6 +8,8 @@
  *   }
  * }
  */
+
+////////////////////////// recursion 
 public class Solution {
   public List<Integer> preOrder(TreeNode root) {
     // Write your solution here.
@@ -47,7 +49,7 @@ public class Solution {
     return result;
   }
 }
-//////////////////////////////////////
+////////////////////////////////////// can neglect this
 public class Solution2 {  // non - recursion
   public List<Integer> preOrder(TreeNode root) {
     // Write your solution here.
