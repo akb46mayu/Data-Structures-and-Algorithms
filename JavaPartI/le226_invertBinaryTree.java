@@ -22,6 +22,9 @@ to
  *     TreeNode(int x) { val = x; }
  * }
  */
+// recursion witnout return values
+
+///   recursion with return values
 public class Solution {
     public TreeNode invertTree(TreeNode root) {
         if (root == null || (root.left == null && root.right == null)) {
