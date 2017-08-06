@@ -8,6 +8,7 @@
  *   }
  * }
  */
+/// iteration way 1
 public class Solution {
   public List<Integer> inOrder(TreeNode root) {
     // Write your solution here.
@@ -30,7 +31,27 @@ public class Solution {
     return result;
   }
 }
-/////
+///// iteration way 2
+public class Solution {
+  public List<Integer> inOrder(TreeNode root) {
+    // Write your solution here.
+    Deque<TreeNode> stack = new LinkedList<>();
+    List<Integer> res = new ArrayList<>();
+    TreeNode cur = root;
+    while (cur != null || !stack.isEmpty()){
+      while (cur != null) {
+        stack.offerFirst(cur);
+        cur = cur.left;
+      }
+      cur = stack.peekFirst().right;
+      res.add(stack.pollFirst().key);
+    }
+    return res;
+  }
+}
+
+
+///////
 
 public class Solution2 {  //recursion + divide conquer type
   public List<Integer> inOrder(TreeNode root) {
