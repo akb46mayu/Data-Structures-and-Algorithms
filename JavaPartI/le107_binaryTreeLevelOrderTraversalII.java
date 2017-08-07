@@ -51,3 +51,24 @@ public class Solution {
         return res;
     }
 }
+//// dfs
+public class Solution {
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        dfs(root, res, 0);
+        return res;
+    }
+    
+    private void dfs(TreeNode root, List<List<Integer>> res, int level) {
+        if (root == null) {
+            return;
+        }
+        if (level + 1> res.size()) {
+            res.add(0, new LinkedList<Integer>());
+        }
+        res.get(res.size() - level - 1).add(root.val);
+        
+        dfs(root.left, res, level + 1);
+        dfs(root.right, res, level + 1);
+    }
+}
