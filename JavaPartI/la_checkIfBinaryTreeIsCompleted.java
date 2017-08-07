@@ -14,26 +14,31 @@ public class Solution {
       if (root == null) {
         return true;
       }
-      boolean tag = false;
-      Queue<TreeNode> q = new LinkedList<TreeNode>();
+      Queue<TreeNode> q = new LinkedList<>();
+      int tag = 0;
       q.offer(root);
-      while (!q.isEmpty()) {
-        TreeNode cur = q.poll();
-        if (cur.left == null) {
-          tag = true;
-        } else if (tag) {
-          return false;
-        } else {
-          q.offer(cur.left);
+      while(!q.isEmpty()) {
+        int qsize = q.size();
+        for (int i = 0; i < qsize; i++) {
+          TreeNode temp = q.poll();
+          if (temp.left != null) {
+            if (tag == 1) {
+              return false;
+            }
+            q.offer(temp.left);
+          } else {
+            tag = 1;
+          }
+          if (temp.right != null) {
+            if (tag == 1) {
+              return false;
+            }
+            q.offer(temp.right);
+          } else {
+            tag = 1;
+          }
         }
-        if (cur.right == null) {
-          tag = true;
-        } else if (tag) {
-          return false;
-        } else {
-          q.offer(cur.right);
-        }
-    }
-    return true;
+      }
+      return true;
   }
 }
