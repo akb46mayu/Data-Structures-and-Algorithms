@@ -8,6 +8,7 @@
  *   }
  * }
  */
+// post order traversal
 public class Solution {
   public boolean isBalanced(TreeNode root) {
     // Write your solution here.
