@@ -31,3 +31,29 @@ public class Solution {
     return result;
   }
 }
+/// way 2, using java api for maxheap
+public class Solution {
+  public int[] kSmallest(int[] array, int k) {
+    // Write your solution here
+    int n = array.length;
+    if (n == 0 || k == 0) {
+      return new int[0];
+    }
+    int[] res = new int[k];
+    PriorityQueue<Integer> pq = new PriorityQueue(k, Collections.reverseOrder());
+    for (int i = 0; i < n; i++) {
+      if (i < k) {
+        pq.offer(array[i]);
+      } else {
+        if (array[i] < pq.peek()) {
+          pq.poll();
+          pq.offer(array[i]);
+        }
+      }
+    }
+    for (int i = 0; i < k; i++) {
+      res[k - i - 1] = pq.poll();
+    }
+    return res;
+  }
+}
