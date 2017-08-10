@@ -9,9 +9,12 @@ public class Solution {
     int glbmax = 0;
     dp[0] = 1;
     for (int i = 1; i < n; i++) {
-      int locmax = 0;
       for (int j = 0; j < i; j++) {
-        dp[i] = Math.max(dp[i], dp[j] + (array[i] > array[j] ? 1 : 0));
+        if (array[i] > array[j]) {
+          dp[i] = Math.max(dp[j] + 1, dp[i]);
+        } else {
+          dp[i] = Math.max(dp[i], 1);
+        }
       }
       glbmax = Math.max(dp[i], glbmax);
     }
