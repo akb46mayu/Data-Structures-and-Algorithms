@@ -17,7 +17,7 @@ public class Solution {
     return globalMax;
   }
 }
-////
+//// dp solution
 public class Solution2 {
   public int longest(int[] array) {
     // Write your solution here.
