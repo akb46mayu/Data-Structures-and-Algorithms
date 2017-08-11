@@ -19,6 +19,20 @@ public class Solution {
 }
 /// sol2 : dp , left bit seg, right small seg
 
+public class Solution2 {
+    public int maxProduct(int length) {
+      // Write your solution here. 
+      int n = length;
+      int[] dp = new int[n + 1];
+      dp[1] = 1;
+      for (int j = 2; j <= n; j++) {
+        for (int i = 1; i < j; i++) {
+          dp[j] = Math.max(dp[j], Math.max(dp[i], i) * (j - i));
+        }
+      }
+      return dp[n];
+    }
+}
 
 
 // recursion + left big, right small
