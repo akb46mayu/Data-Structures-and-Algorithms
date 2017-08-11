@@ -36,3 +36,17 @@ public class Solution2 {
 
 
 // recursion + left big, right small
+public class Solution3 {
+    public int maxProduct(int length) {
+      // Write your solution here. 
+      if (length == 1) {
+        return 1;
+      }
+      int n = length;
+      int val = 0;
+      for (int i = 1; i < n; i++) {
+        val = Math.max(val, Math.max(maxProduct(i), i) * (n - i));
+      }
+      return val;
+    }
+}
