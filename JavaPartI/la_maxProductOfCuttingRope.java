@@ -1,4 +1,5 @@
 /// dp - dp[i]: max product of rope with length of i, with at least one cut
+// sol1:  left big seg, right big seg
 public class Solution {
   public int maxProduct(int length) {
     // Write your solution here.
@@ -16,3 +17,8 @@ public class Solution {
     return dp[n];
   }
 }
+/// sol2 : dp , left bit seg, right small seg
+
+
+
+// recursion + left big, right small
