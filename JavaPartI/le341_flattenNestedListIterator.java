@@ -74,3 +74,40 @@ public class NestedIterator implements Iterator<Integer> {
  * NestedIterator i = new NestedIterator(nestedList);
  * while (i.hasNext()) v[f()] = i.next();
  */
+
+
+
+//////// solution 2 use dfs (extra space required)
+public class NestedIterator implements Iterator<Integer> {
+    List<Integer> list;
+    int idx;
+    public NestedIterator(List<NestedInteger> nestedList) {
+        list = new ArrayList<>();
+        idx = 0;
+        for (NestedInteger ni : nestedList) {
+            flaten(ni);
+        }
+        
+    }
+    private void flaten(NestedInteger ni) {
+        if (ni.isInteger()) {
+            list.add(ni.getInteger());
+            return;
+        }
+        for (NestedInteger i : ni.getList()) {
+            flaten(i);
+        }
+        
+    }
+        
+    @Override
+    public Integer next() {
+        return list.get(idx++);
+    }
+
+    @Override
+    public boolean hasNext() {
+        return idx < list.size();
+    }
+}
+
