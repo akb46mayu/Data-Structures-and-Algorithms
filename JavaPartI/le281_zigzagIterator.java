@@ -46,3 +46,32 @@ public class ZigzagIterator {
  * ZigzagIterator i = new ZigzagIterator(v1, v2);
  * while (i.hasNext()) v[f()] = i.next();
  */
+
+///// do not use java iterator use arraylist instead
+
+public class ZigzagIterator {
+    List<Integer> v1, v2;
+    int p1, p2;
+    boolean first; // 0 : v1, 1 : v2
+    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
+        this.v1 = v1;
+        this.v2 = v2;
+        p1 = 0;
+        p2 = 0;
+        first = v1.size() > 0;
+    }
+
+    public int next() {
+        int out = first == true ? v1.get(p1++) : v2.get(p2++);
+        if (first == true && p2 < v2.size()) {
+            first = false;
+        } else if (first == false && p1 < v1.size()) {
+            first = true;
+        }
+        return out;
+    }
+
+    public boolean hasNext() {
+        return p1 < v1.size() || p2 < v2.size();
+    }
+}
