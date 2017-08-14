@@ -51,4 +51,40 @@ public class ZigzagIterator2 {
  
  ///////////////  use java api
  
- 
+ public class ZigzagIterator2 {
+    /**
+     * @param vecs a list of 1d vectors
+     */
+    List<Iterator<Integer>> vecs;
+    int k; // num of lists.
+    int i; // current row
+    public ZigzagIterator2(ArrayList<ArrayList<Integer>> vecs) {
+        // initialize your data structure here.
+        this.vecs = new ArrayList<Iterator<Integer>>();
+        k = vecs.size();
+        i = 0;
+        for (List<Integer> vec : vecs) {
+            this.vecs.add(vec.iterator());
+        }
+    }
+
+    public int next() {
+        // Write your code here
+        int res = vecs.get(i % k).next();
+        i++;
+        return res;
+    }
+
+    public boolean hasNext() {
+        // Write your code here 
+        int count = 0;
+        while(count < k) {
+            if (vecs.get(i % k).hasNext()) {
+                return true;
+            }
+            i++;
+            count++;
+        }
+        return false;
+    }
+}
