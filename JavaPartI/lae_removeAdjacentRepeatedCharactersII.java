@@ -24,3 +24,22 @@ public class Solution {
     return new String(arr, 0, i + 1);
   }
 }
+
+
+/// ta class solution
+public class Solution {
+  public String deDup(String input) {
+    // write your solution here
+    if (input == null || input.length() <= 2) {
+      return input;
+    }
+    int i = 1, n = input.length();
+    char[] arr = input.toCharArray();
+    for (int j = 2; j < n; j++) {
+      if (arr[j] != arr[i - 1]) {
+        arr[++i] = arr[j];
+      }
+    }
+    return new String(arr, 0, i + 1);
+  }
+}
