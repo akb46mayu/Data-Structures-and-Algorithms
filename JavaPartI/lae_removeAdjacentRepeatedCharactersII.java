@@ -1,3 +1,4 @@
+// compare with the previous element
 public class Solution {
   public String deDup(String input) {
     // write your solution here
@@ -26,7 +27,7 @@ public class Solution {
 }
 
 
-/// ta class solution
+/// ta class solution, compare with the 'res'
 public class Solution {
   public String deDup(String input) {
     // write your solution here
