@@ -63,6 +63,48 @@ public class StringIterator {
     }
 }
 
+
+////way 2 diff logics
+public class StringIterator {
+    String str;
+    int i = 0;
+    int size = 0;
+    long count = 0;
+    char cur;
+    public StringIterator(String compressedString) {
+        str = compressedString;
+        size = str.length();
+    }
+    
+    public char next() {
+        if (count > 0) {
+            count--;
+            return cur;
+        } else if (i < size) {
+            cur = str.charAt(i);
+            int j = i + 1;
+            //while (j < size && ch - '0' >= 0 && ch - '0' <= 9) {
+            while (j < size && Character.isDigit(str.charAt(j))) {
+                count = count * 10 + str.charAt(j) - '0';
+                j++;
+                
+            }
+            count--;
+            i = j;
+            return cur;
+        } else {
+            return ' ';
+        }
+            
+
+       
+    }
+    
+    public boolean hasNext() {
+        return count > 0 || i < size; // has to be a new ch
+    }
+}
+
 /**
  * Your StringIterator object will be instantiated and called as such:
  * StringIterator obj = new StringIterator(compressedString);
