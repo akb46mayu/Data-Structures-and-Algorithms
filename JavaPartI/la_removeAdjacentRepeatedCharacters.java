@@ -6,16 +6,14 @@ public class Solution {
     if (input == null || input.length() == 0) {
       return input;
     }
-    
+    int n = input.length();
     char[] arr = input.toCharArray();
-    int i = 0, j = 0;
-    while (j < arr.length) {
-      if (arr[i] == arr[j]) {
-        j++;
-      } else {
-        arr[++i] = arr[j++];
+    int i = 0;
+    for (int j = 1; j < n; j++) {
+      if (arr[j] != arr[j - 1]) {
+        arr[++i] = arr[j]; 
       }
     }
-    return new String(arr, 0, i + 1);  // i + 1 total number of elements, do not forget to add "new"
+    return new String(arr, 0, i + 1);// i + 1 total number of elements, do not forget to add "new"
   } 
 }
