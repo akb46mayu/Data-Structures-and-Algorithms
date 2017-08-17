@@ -51,3 +51,12 @@ public class Solution {
         return pqueue.poll().sum;
     }
 }
+/////// you can also use the comparator as follows:
+class MyComparator implements Comparator<Cell> {
+  public int compare(Cell o1, Cell o2) {
+    if (o1.val == o2.val) {
+      return 0;
+    }
+    return o1.val < o2.val ? -1 : 1;
+  }
+}
