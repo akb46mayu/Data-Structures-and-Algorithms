@@ -9,7 +9,7 @@ public class Solution {
   
   public void read(int value) {
     // write your implementation here.
-    if (maxHeap.isEmpty() || value <= maxHeap.peek()) {
+    if (maxHeap.isEmpty() || value <= maxHeap.peek()) { // value < maxheap.peek is also ok
       maxHeap.offer(value);
     } else {
       minHeap.offer(value);
