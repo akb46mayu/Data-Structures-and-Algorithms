@@ -46,3 +46,36 @@ public class Solution {
     }
 }
 ///// dfs
+
+public class Solution {
+    public int countComponents(int n, int[][] edges) {
+        int m = edges.length;
+        Map<Integer, List<Integer>> hmap = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            hmap.put(i, new ArrayList<>());
+        }
+        for (int i = 0; i < m; i++) {
+                hmap.get(edges[i][0]).add(edges[i][1]);
+                hmap.get(edges[i][1]).add(edges[i][0]);
+        }
+        Set<Integer> hset = new HashSet<>();
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (!hset.contains(i)) {
+                dfs(i, hmap, hset);
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    private void dfs(int i, Map<Integer, List<Integer>> hmap, Set<Integer> hset) {
+       if (hset.contains(i)) {
+           return;
+       }
+       hset.add(i);
+       for (int nei : hmap.get(i)) {
+           dfs(nei, hmap, hset);
+       }
+    }
+}
