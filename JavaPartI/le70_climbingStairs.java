@@ -12,3 +12,21 @@ class Solution {
         return dp[n];
     }
 }
+
+////
+class Solution {
+    public int climbStairs(int n) {
+        if (n <= 1) {
+            return 1;
+        }
+        int first = 1;
+        int second = 1;
+        int res = 0;
+        for (int i = 2; i <= n; i++) {
+            res = first + second;
+            first = second;
+            second = res;
+        }
+        return res;
+    }
+}
