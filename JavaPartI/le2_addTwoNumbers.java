@@ -32,5 +32,4 @@ class Solution {
         }
         return res.next;
     }
-
 }
