@@ -99,3 +99,44 @@ public class Solution {
         return newnode;
     }
 }
+// leetcode version 2 (split stopping criteria is diff)
+public class Solution {
+    public RandomListNode copyRandomList(RandomListNode head) {
+        if (head == null) {
+            return null;
+        }
+        RandomListNode cur = head;
+        while (cur != null) {
+            RandomListNode newnode = new RandomListNode(cur.label);
+            RandomListNode next = cur.next;
+            cur.next = newnode;
+            newnode.next = next;
+            cur = next;
+        }
+        // random pointers
+        cur = head;
+        while (cur != null) {
+            if (cur.random != null) {
+                 cur.next.random = cur.random.next;
+            }
+            cur = cur.next.next;
+        }
+        // split
+        return split(head);
+    }
+    
+    private RandomListNode split(RandomListNode head) {
+        RandomListNode res = head.next;
+        RandomListNode p1 = head, p2 = res;
+        while (p1.next.next != null) {
+            RandomListNode p1next = p2.next;
+            RandomListNode p2next = p2.next.next;
+            p1.next = p1next;
+            p2.next = p2next;
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        p1.next = null;
+        return res;
+    }
+}
