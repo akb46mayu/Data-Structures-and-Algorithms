@@ -33,24 +33,29 @@ Your code should preferably run in O(n) time and use only O(1) memory.
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode cura = headA, curb = headB;
-        int numchange = 0;
-        while (numchange < 3) {
-            if (cura != null && curb != null && cura.val == curb.val) {
-                return cura;
+        if (headA == null || headB == null) {
+            return null;
+        }
+        ListNode one = headA, two = headB;
+        int count = 0;
+        while (count < 3) {
+            if (one != null && two != null && one == two) { // one.val == two.val also work
+                return one;
             }
-            if (cura == null) {
-                cura = headB;
-                numchange++;
+            if (one == null) {
+                one = headB;
+                count++;
             } else {
-                cura = cura.next;
+                one = one.next;
             }
-            if (curb == null) {
-                curb = headA;
-                numchange++;
+            
+            if (two == null) {
+                two = headA;
+                count++;
             } else {
-                curb = curb.next;
+                two = two.next;
             }
+            
         }
         return null;
     }
