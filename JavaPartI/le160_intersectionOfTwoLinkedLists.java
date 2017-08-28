@@ -60,3 +60,37 @@ public class Solution {
         return null;
     }
 }
+/// use the length of the lists
+
+public class Solution2 {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        ListNode one = headA, two = headB;
+        int lena = countLen(headA), lenb = countLen(headB);
+        while (lena < lenb) {
+            two = two.next;
+            lenb--;
+        }
+        while (lena > lenb) {
+            one = one.next;
+            lena--;
+        }
+        while (one != two) {
+            one = one.next;
+            two = two.next;
+        }
+        return one;
+    }
+    
+    private int countLen(ListNode head) { // count the number of nodes
+        int len = 0;
+        while (head != null) {
+            len++;
+            head = head.next;
+        }
+        return len;
+    }
+    
+}
