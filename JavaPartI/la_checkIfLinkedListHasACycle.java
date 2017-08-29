@@ -22,3 +22,21 @@ public class Solution {
     return false;
   }
 }
+/// way 2 logic:
+public class Solution {
+  public boolean hasCycle(ListNode head) {
+    // write your solution here
+    if (head == null) {
+      return false;
+    }
+    ListNode fast = head, slow = head;
+    while (fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if (fast == slow) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
