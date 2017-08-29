@@ -15,7 +15,7 @@ public class Solution {  // recursion
       return head;
     }
     ListNode newHead = head.next;
-    head.next = reverseInPairs(head.next.next);
+    head.next = reverseInPairs(head.next.next);// reverseInPairs(newHead.next) also works
     newHead.next = head;
     return newHead;
   }
