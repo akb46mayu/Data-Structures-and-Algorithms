@@ -48,3 +48,29 @@ class Solution {
         return prev;
     }
 }
+//// recursion
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+        int count = 0;
+        ListNode tail = head;
+        while (tail != null && count < k) {
+            tail = tail.next;
+            count++;
+        }
+        if (count == k) {
+            ListNode prev = reverseKGroup(tail, k);
+            while (count > 0) {
+                ListNode temp = head.next;
+                head.next = prev;
+                prev = head;
+                head = temp;
+                count--;
+            }
+            head = prev;
+        }
+        return head;
+    }
+}
