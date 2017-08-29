@@ -49,4 +49,41 @@ public class Solution {
     return newnode;
   }
 }
-/// leetcode version
+/// leetcode version (leet 143)
+
+public class Solution {
+    public void reorderList(ListNode head) {
+        if (head == null || head.next == null) {
+            return;
+        }
+        ListNode fast = head, slow = head;
+        while (fast.next != null && fast.next.next!= null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode p2 = slow.next;
+        slow.next = null;
+        p2 = reverse(p2);
+        ListNode p1 = head;
+        while (p1 != null && p2 != null) {
+            ListNode p2next = p2.next;
+            p2.next = p1.next;
+            p1.next = p2;
+            p1 = p1.next.next;
+            p2 = p2next;
+        }
+    }
+    private ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) {
+          return head;
+        }
+        ListNode cur = head, prev = null;
+        while(cur != null) {
+            ListNode next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        return prev;
+    }
+}
