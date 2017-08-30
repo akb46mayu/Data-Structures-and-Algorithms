@@ -22,8 +22,8 @@ public class Main {
     while (cur != null ) {
       tarprev = findMin(prev, cur);
       swap(prev, tarprev);
-      prev = prev.next;
-      cur = prev.next;
+      prev = prev.next; // prev is always unchanged.
+      cur = prev.next;// after swap cur.next value might be changed, so we can not use cur = cur.next;!!!!
     }
     return dummy.next;
   }
