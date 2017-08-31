@@ -27,7 +27,7 @@ return its level order traversal as:
  */
 public class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<List<Integer>> res = new ArrayList<List<Integer>>(); // should we use linkedlist here?
         if (root == null) {
             return res;
         }
