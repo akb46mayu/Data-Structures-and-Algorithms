@@ -44,7 +44,7 @@ class Solution {
             prev.right = root;
         }
         prev = root;
-        TreeNode right = root.right;
+        TreeNode right = root.right;// root.right will be changed after using flatten(root.let). left node will be conencted to the right
         flatten(root.left);
         flatten(right);
     }
