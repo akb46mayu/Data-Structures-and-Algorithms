@@ -66,8 +66,7 @@ public class Solution {
         if (level + 1> res.size()) {
             res.add(0, new LinkedList<Integer>());
         }
-        res.get(res.size() - level - 1).add(root.val);
-        
+        res.get(res.size() - level - 1).add(root.val); // here res.size() has been changed
         dfs(root.left, res, level + 1);
         dfs(root.right, res, level + 1);
     }
