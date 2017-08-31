@@ -43,22 +43,13 @@ public class Solution {
 ///   recursion with return values
 public class Solution {
     public TreeNode invertTree(TreeNode root) {
-        if (root == null || (root.left == null && root.right == null)) {
+       if (root == null || (root.left == null && root.right == null)) {
+            return root;
+        } else {
+            TreeNode temp = root.left;
+            root.left = invertTree(root.right);
+            root.right = invertTree(temp);
             return root;
         }
-   
-        if (root.left != null && root.right != null) {
-            TreeNode nleft = invertTree(root.right);
-            TreeNode nright = invertTree(root.left);
-            root.left = nleft;
-            root.right = nright;
-        } else if (root.left != null) {
-            root.right = invertTree(root.left);
-            root.left = null;
-        } else {
-            root.left = invertTree(root.right);
-            root.right = null;
-        }
-        return root;
-    }
+    }   
 }
