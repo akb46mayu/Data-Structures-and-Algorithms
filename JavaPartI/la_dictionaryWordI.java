@@ -24,3 +24,38 @@ public class Solution {
     return mySet;
   }
 }
+//// way 2 use 0 index.
+
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> hset = getSet(wordDict);
+        int n = s.length();
+        boolean[] dp = new boolean[n]; // whether is it spearable 
+        for (int k = 0; k < n; k++) {
+            for (int j = k; j >= 0; j--) {
+                String str = s.substring(j, k + 1);
+                if (hset.contains(str)) {
+                    if (j == 0) {
+                        dp[k] = true;
+                        break;
+                    } else {
+                        if (dp[j - 1] == true) {
+                            dp[k] = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return dp[n - 1];
+    }
+    private Set<String> getSet(List<String> wordDict) {
+        Set<String> hset = new HashSet<>();
+        for (String str : wordDict) {
+            if (!hset.contains(str)) {
+                hset.add(str);
+            }
+        }
+        return hset;
+    }
+}
