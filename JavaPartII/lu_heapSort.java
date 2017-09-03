@@ -2,6 +2,7 @@
 Given an array, use heapsort to sort it in place.
 You can not use java pq api
 
+use la oj do not forget.
 */
 
 import java.util.*;
