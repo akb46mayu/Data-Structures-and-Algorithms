@@ -36,3 +36,33 @@ public class Solution2 {
     arr[right] = temp;
   }
 }
+/// leet384 with reset version
+class Solution {
+    private int[] arr;
+    private int[] org;
+    public Solution(int[] nums) {
+        if (nums == null) {
+            return;
+        }
+        arr = nums;
+        int n = nums.length;
+        org = nums.clone();
+    }
+    
+    /** Resets the array to its original configuration and return it. */
+    public int[] reset() {
+        return org;
+    }
+    
+    /** Returns a random shuffling of the array. */
+    public int[] shuffle() {
+        int n = arr.length;
+        for (int i = n - 1; i >= 1; i--) {
+            int idx = (int) ((i + 1) * Math.random());
+            int tmp = arr[idx];
+            arr[idx] = arr[i];
+            arr[i] = tmp;
+        }
+        return arr;
+    }
+}
