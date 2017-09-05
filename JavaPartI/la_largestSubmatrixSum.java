@@ -36,3 +36,43 @@ public class Solution {
   }
   
 }
+//// way 2
+
+public class Solution {
+  public int largest(int[][] matrix) {
+    // Write your solution here.
+    if (matrix.length == 0 || matrix[0].length == 0) {
+      return 0;
+    }
+    int m = matrix.length, n = matrix[0].length;
+    int[][] colsum = new int[m + 1][n];
+    for (int i = 0; i <= m; i++) {
+      for (int j = 0; j < n; j++) {
+        if (i == 0) {
+          colsum[i][j] = 0;
+        } else if (i == 1) {
+          colsum[i][j] = matrix[i - 1][j];
+        } else {
+          colsum[i][j] = colsum[i - 1][j] + matrix[i - 1][j]; 
+        }
+      }
+    }
+    //
+    int[] dp = new int[n];
+    int max = Integer.MIN_VALUE;
+    for (int k = 1; k <= m; k++) {
+      for (int i = 0; i < k; i++) {
+        for (int j = 0; j < n; j++) {
+          int cur = colsum[k][j] - colsum[i][j];
+          if (j == 0) {
+            dp[j] = cur;
+          } else {
+            dp[j] = Math.max(cur, dp[j - 1] + cur);
+          }
+          max = Math.max(max, dp[j]);
+        }
+      }
+    }
+    return max;
+  }
+}
