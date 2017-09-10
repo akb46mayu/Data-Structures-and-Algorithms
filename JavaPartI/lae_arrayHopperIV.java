@@ -1,4 +1,4 @@
-// way 1 check after poped form the queue
+// way 1 check after polled form the queue
 public class Solution {
   public int minJump(int[] array, int index) {
     // write your solution here
