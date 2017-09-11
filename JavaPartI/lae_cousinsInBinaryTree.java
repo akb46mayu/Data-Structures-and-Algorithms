@@ -32,3 +32,45 @@ public class Solution {
     return left > right ? left : right;
   }
 }
+// bfs
+
+public class Solution2 {
+  public boolean isCousin(TreeNode root, int a, int b) {
+    // Write your solution here.
+    if (root == null || root.key == a || root.key == b) {
+      return false;
+    }
+    Queue<TreeNode> q = new LinkedList<>();
+    TreeNode paren1 = null, paren2 = null;
+    q.offer(root);
+    while (!q.isEmpty()) {
+      int qsize = q.size();
+      for (int i = 0; i < qsize; i++) {
+        TreeNode temp = q.poll();
+        if (temp.left != null) {
+          if (temp.left.key == a) {
+            paren1 = temp;
+          } else if (temp.left.key == b) {
+            paren2 = temp;
+          }
+          q.offer(temp.left);
+        }
+        if (temp.right != null) {
+          if (temp.right.key == a) {
+            paren1 = temp;
+          } else if (temp.right.key == b) {
+            paren2 = temp;
+          }
+          q.offer(temp.right);
+        }
+      }
+      if (paren1 != null && paren2 != null && paren1 != paren2) {
+        return true;
+      } else {
+        paren1 = null;
+        paren2 = null;
+      }
+    }
+    return false;
+  }
+}
