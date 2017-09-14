@@ -43,7 +43,7 @@ public class Solution {
         stack.offerFirst(cur);
         cur = cur.left;
       }
-      cur = stack.peekFirst().right;
+      cur = stack.peekFirst().right; // save the right pointer befroe the top stack value be removed
       res.add(stack.pollFirst().key);
     }
     return res;
