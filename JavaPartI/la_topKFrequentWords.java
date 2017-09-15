@@ -25,7 +25,7 @@ public class Solution {
 	    }
 	    /// print 
 	    String[] result = new String[minHeap.size()];
-	    for (int i = minHeap.size() - 1; i >= 0; i --) {
+	    for (int i = minHeap.size() - 1; i >= 0; i --) { // k can be larger than the acutal size of the input
 	      result[i] = minHeap.poll().getKey();
 	    }
 	    return result;
