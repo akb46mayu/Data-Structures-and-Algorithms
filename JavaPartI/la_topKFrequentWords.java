@@ -8,7 +8,7 @@ public class Solution {
 	    PriorityQueue<Map.Entry<String, Integer>> minHeap = new PriorityQueue<Map.Entry<String, Integer>>(k, new
 	    Comparator<Map.Entry<String, Integer>>() {
 	    	public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
-	            return e1.getValue().compareTo(e2.getValue());
+	            return e1.getValue().compareTo(e2.getValue()); // the compare to is from the integer object
 	        }
 	    });
 	    
