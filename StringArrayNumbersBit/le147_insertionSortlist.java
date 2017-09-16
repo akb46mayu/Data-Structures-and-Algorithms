@@ -6,6 +6,32 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+
+//
+
+
+class Solution {/// way1
+    public ListNode insertionSortList(ListNode head) {
+        if (head == null) {
+            return head;
+        }
+        ListNode dummy = new ListNode(0);
+        ListNode cur = head, prev = dummy;
+        while (cur != null) {
+            prev = dummy;
+            while(prev.next != null && cur.val > prev.next.val) {
+                prev = prev.next;
+            }
+            ListNode nextcur = cur.next;
+            cur.next = prev.next;
+            prev.next = cur;
+            cur = nextcur;
+        }
+        return dummy.next;
+    }
+}
+
+//// way2
 class Solution { // this solution has two lists, i just separte it as unsroted list and sorted list, quiet redundant.
     public ListNode insertionSortList(ListNode head) {
         if (head == null || head.next == null) {
@@ -42,3 +68,5 @@ class Solution { // this solution has two lists, i just separte it as unsroted l
         return dummy.next;
     }
 }
+
+
