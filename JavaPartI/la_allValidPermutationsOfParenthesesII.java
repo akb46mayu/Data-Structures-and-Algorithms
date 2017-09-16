@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution { // way1 use string builder 
   private static final char[] cset = {'(', ')', '[', ']', '{', '}'};
   public List<String> validParentheses(int l, int m, int n) {
     // Write your solution here.
@@ -41,4 +41,48 @@ public class Solution {
     }
   }
   
+}
+/// way 2 using character array
+
+public class Solution {
+  public static char[] pool = {'(', ')', '[', ']', '{', '}'};
+  public List<String> validParentheses(int l, int m, int n) {
+    // Write your solution here.
+    List<String> res = new ArrayList<>();
+    int bits = (l + m + n) * 2;
+    int[] stat = {l, l, m, m, n, n};
+    char[] temp = new char[bits];
+    Deque<Character> stack = new LinkedList<>();
+    parenHelper(bits, 0, stat, res, temp, stack);
+    return res;
+  }
+  
+  private void parenHelper(int bits, int level, int[] stat, List<String> res, char[] temp, Deque<Character> stack) {
+    if (level == bits) {
+      res.add(new String(temp));
+      return;
+    }
+    for (int i = 0; i < 6; i++) {
+      char ch = pool[i];
+      if (i % 2 == 0) { // add left brackets 
+        if (stat[i] > 0) {
+          temp[level] = ch;
+          stack.offerFirst(ch);
+          stat[i]--;
+          parenHelper(bits, level + 1, stat, res, temp, stack);
+          stack.pollFirst();
+          stat[i]++;
+        }
+      } else {
+        if (stat[i] > 0 && stack.size() >= 1 && stack.peekFirst() == pool[i - 1]) {
+          temp[level] = ch;
+          stack.pollFirst();
+          stat[i]--;
+          parenHelper(bits, level + 1, stat, res, temp, stack);
+          stack.offerFirst(pool[i - 1]);
+          stat[i]++;
+        }
+      }
+    }
+  }
 }
