@@ -23,7 +23,7 @@ class Solution {/// way1
                 prev = prev.next;
             }
             ListNode nextcur = cur.next;
-            cur.next = prev.next;
+            cur.next = prev.next;  //after this step , the node is disconected from the list
             prev.next = cur;
             cur = nextcur;
         }
