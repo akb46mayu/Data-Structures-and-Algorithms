@@ -30,3 +30,14 @@ public class Solution2 {
   }
 }
 //////////////////////////////////////////////
+// leet code ver
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int sum = (1 + n) * n  / 2;
+        for (int i : nums) {
+            sum -= i;
+        }
+        return sum;
+    }
+}
