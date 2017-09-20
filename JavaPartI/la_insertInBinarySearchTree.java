@@ -28,7 +28,7 @@ public class Solution {
         cur = cur.right;
       }
     }
-    
+    // this is when cur is null (out of the while)
     if (key < par.key) {
       par.left = new TreeNode(key);
     } else {
