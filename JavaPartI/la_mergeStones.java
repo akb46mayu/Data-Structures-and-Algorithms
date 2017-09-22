@@ -72,3 +72,32 @@ public class Solution {
     return dp[1][n];
   }
 }
+/////
+
+public class Solution {
+  public int minCost(int[] stones) {
+    // Write your solution here.
+    int n = stones.length;
+    if (n == 1) {
+      return 0;
+    }
+    int[][] dp = new int[n][n];
+    int[] sum = new int[n];
+    sum[0] = stones[0];
+    for (int j = 1;  j < n; j++) {
+      sum[j] = sum[j - 1] + stones[j];
+      for (int i = j - 1; i >= 0; i--) {
+        dp[i][j] = Integer.MAX_VALUE;
+        if (j - i == 1) {
+          dp[i][j] = stones[i] + stones[j];
+          continue;
+        }
+        for (int k = i + 1; k <= j; k++) {
+          int subsum = (i == 0 ? sum[j] : sum[j] - sum[i - 1]);
+          dp[i][j] = Math.min(dp[i][j], dp[i][k - 1] + dp[k][j] + subsum);
+        }
+      }
+    }
+    return dp[0][n - 1];
+  }
+}
