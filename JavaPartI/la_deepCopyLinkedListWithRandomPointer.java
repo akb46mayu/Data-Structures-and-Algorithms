@@ -61,7 +61,44 @@ public class Solution {
     return dummy.next;
   }
 }
-// solution 2 leetcode version
+// solution 2,  leetcode version (suggested simple version:)
+
+public class Solution {
+    public RandomListNode copyRandomList(RandomListNode head) {
+        if (head == null) {
+            return head;
+        }
+        RandomListNode dummy = new RandomListNode(0);
+        dummy.next = head;
+        while(head != null) {
+            RandomListNode nnode = new RandomListNode(head.label);
+            nnode.next = head.next;
+            head.next = nnode;
+            head = head.next.next;
+        }
+        // copy random nodes
+        head = dummy.next;
+        while(head!=null) { 
+            if (head.random != null) {
+                head.next.random = head.random.next;
+            }
+            head = head.next.next;
+        }
+        // split
+        head = dummy;
+        while(head != null && head.next != null) {
+            RandomListNode nexthead = head.next.next;
+            head.next.next = nexthead.next;
+            head.next = nexthead;
+            head = nexthead;
+        }
+        return dummy.next;
+    }
+}
+
+
+
+//
 public class Solution {
     public RandomListNode copyRandomList(RandomListNode head) {
         if (head == null) {
