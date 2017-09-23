@@ -40,3 +40,29 @@ public class Solution {
   }
   
 }
+///// way 2
+
+public class Solution {
+  public ListNode merge(List<ListNode> listOfLists) {
+    // Write your solution here/.
+    Queue<ListNode> pq = new PriorityQueue<>(1, new MyComparator());
+    for(ListNode node : listOfLists) {
+      if (node != null) {
+        pq.offer(node);
+      }
+    }
+    ListNode dummy = new ListNode(0);
+    ListNode cur = dummy;
+    while(!pq.isEmpty()) {
+      ListNode temp = pq.poll();
+      ListNode next = temp.next;
+      cur.next = temp;
+      temp.next = null;
+      if (next!= null) {
+        pq.offer(next);
+      }
+      cur = cur.next;
+    }
+    return dummy.next;
+  }
+}
