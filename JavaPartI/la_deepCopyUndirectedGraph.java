@@ -40,27 +40,24 @@ public class Solution {  // dfs
 public class Solution {
   public List<GraphNode> copy(List<GraphNode> graph) {
     // Write your solution here.
-    Map<GraphNode, GraphNode> hmap = new HashMap<>();
+    Map<GraphNode, GraphNode> map = new HashMap<>();
     List<GraphNode> res = new ArrayList<>();
-    for (GraphNode node : graph) {
-      if (!hmap.containsKey(node)) {
-        copyDfs(node, res, hmap);
-      }
+    for(GraphNode node : graph) {
+      subCopy(node, map, res);
     }
     return res;
   }
   
-  private void copyDfs(GraphNode node, List<GraphNode> res, Map<GraphNode, GraphNode> hmap) {
-    // assume node has not been visited
-    if (hmap.containsKey(node)) {
+  private void subCopy(GraphNode node, Map<GraphNode, GraphNode> map, List<GraphNode> res) {
+    if (map.containsKey(node)) {
       return;
     }
-    hmap.put(node, new GraphNode(node.key));
-    for (GraphNode nbh : node.neighbors) {
-      copyDfs(nbh, res, hmap);
-      hmap.get(node).neighbors.add(nbh); // copy all the nbhs
+    map.put(node, new GraphNode(node.key));
+    for(GraphNode nbh : node.neighbors) {
+      subCopy(nbh, map, res);
+      map.get(node).neighbors.add(map.get(nbh));
     }
-    res.add(hmap.get(node));
+    res.add(map.get(node));
   }
 }
 
