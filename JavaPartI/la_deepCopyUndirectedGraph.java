@@ -65,39 +65,34 @@ public class Solution {
 }
 
 ////// BFS
-public class Solution2 {
+public class Solution {
   public List<GraphNode> copy(List<GraphNode> graph) {
     // Write your solution here.
-    Map<GraphNode, GraphNode> hmap = new HashMap<>();
+    Map<GraphNode, GraphNode> map = new HashMap<>();
     List<GraphNode> res = new ArrayList<>();
-    for (GraphNode node : graph) {
-      if (!hmap.containsKey(node)) {
-        copyHelper(node, res, hmap);
-      }
+    for(GraphNode node : graph) {
+      subCopy(node, map, res);
     }
     return res;
   }
   
-  private void copyHelper(GraphNode node, List<GraphNode> res, Map<GraphNode, GraphNode> hmap) {
-    // assume node has not been visited
+  private void subCopy(GraphNode node, Map<GraphNode, GraphNode> map, List<GraphNode> res) {
+    if (map.containsKey(node)) {
+      return;
+    }
     Queue<GraphNode> q = new LinkedList<>();
     q.offer(node);
-    while (!q.isEmpty()) {
-      int size = q.size();
-      for (int i = 0; i < size; i++) {
-        GraphNode popnode = q.poll();
-        if (!hmap.containsKey(popnode)) {
-          hmap.put(popnode, new GraphNode(popnode.key));
+    while(!q.isEmpty()) {
+      GraphNode temp = q.poll();
+      map.put(temp, new GraphNode(temp.key));
+      for (GraphNode nbh : temp.neighbors) {
+        if (!map.containsKey(nbh)) {
+          map.put(nbh, new GraphNode(nbh.key));
+          q.offer(nbh);
         }
-        for (GraphNode nbh : popnode.neighbors) {
-          if (!hmap.containsKey(nbh)) {
-            hmap.put(nbh, new GraphNode(nbh.key));
-            q.offer(nbh);
-          }
-          hmap.get(popnode).neighbors.add(hmap.get(nbh));
-        }
-        res.add(hmap.get(popnode));
+        map.get(temp).neighbors.add(map.get(nbh));
       }
+      res.add(map.get(temp));
     }
   }
 }
