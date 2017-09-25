@@ -20,3 +20,39 @@ public class Solution {
     return res;
   }
 }
+
+
+// method 2
+public class Solution {
+  public List<Integer> common(int[] a, int[] b, int[] c) {
+    // Write your solution here.
+    Map<Integer, Integer> map = new HashMap<>();
+    List<Integer> res = new ArrayList<>();
+    for (int i : a) {
+      Integer count = map.get(i);
+      if (count == null) {
+        map.put(i, 1);
+      } else {
+        map.put(i, count + 1);
+      }
+    }
+    int i = 0, j = 0;
+    int m = b.length, n = c.length;
+    while (i < m && j < n) {
+      if (b[i] == c[j]) {
+        Integer count = map.get(b[i]);
+        if (count != null && count >= 1) {
+          map.put(b[i], count - 1);
+          res.add(b[i]);
+        }
+        i++;
+        j++;
+      } else if (b[i] < c[j]) {
+        i++;
+      } else {
+        j++;
+      }
+    }
+    return res;
+  }
+}
