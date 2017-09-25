@@ -21,7 +21,6 @@ public class Solution {
   }
 }
 
-
 // method 2
 public class Solution {
   public List<Integer> common(int[] a, int[] b, int[] c) {
