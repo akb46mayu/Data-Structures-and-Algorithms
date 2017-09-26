@@ -44,3 +44,26 @@ public class Solution {
     return res;
   }
 }
+// directly use trick]\
+
+public class Solution {
+  public List<List<Integer>> allPairs(int[] array, int target) {
+    // Write your solution here.
+    Map<Integer, Integer> map = new HashMap<>();
+    List<List<Integer>> res = new ArrayList<>();
+    int n = array.length;
+    for (int i = 0; i < n; i++) {
+      Integer count = map.get(target - array[i]);
+      if (count != null) {
+        if (count == 1) {
+          res.add(Arrays.asList(target - array[i], array[i]));
+          map.put(target - array[i], count - 1);
+          map.put(array[i], 0);
+        }
+      } else {
+        map.put(array[i], 1);
+      }
+    }
+    return res;
+  }
+}
