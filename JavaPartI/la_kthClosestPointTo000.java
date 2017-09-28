@@ -47,3 +47,48 @@ public class Solution {
     return dist;
   } 
 }
+//// way 2
+public class Solution {
+   public List<Integer> closest(int[] a, int[] b, int[] c, int k) {
+    // Write your solution here.
+    Queue<List<Integer>> pq = new PriorityQueue<>(k, new Comparator<List<Integer>>() {
+        public int compare(List<Integer> c1, List<Integer> c2) {
+            long d1 = dist(a[c1.get(0)], b[c1.get(1)], c[c1.get(2)]);
+            long d2 = dist(a[c2.get(0)], b[c2.get(1)], c[c2.get(2)]);
+            if (d1 == d2) {
+                return 0;
+            }
+            return d1 < d2 ? -1 : 1;
+        }
+    });
+    Set<List<Integer>> set = new HashSet<>();
+    pq.offer(Arrays.asList(0, 0, 0));
+    set.add(Arrays.asList(0, 0, 0)); //idx 
+    int m = a.length, n = b.length, p = c.length;
+    List<Integer> temp;
+    while (k > 1) {
+      temp = pq.poll();
+      int x = temp.get(0), y = temp.get(1), z = temp.get(2);
+      List<Integer> list = Arrays.asList(x + 1, y, z);
+      if (set.add(list) && x + 1 < m) {
+        pq.offer(list);
+      }
+      list = Arrays.asList(x, y + 1, z);
+      if (set.add(list) && y + 1 < n) {
+        pq.offer(list);
+      }
+      list = Arrays.asList(x, y, z + 1);
+      if (set.add(list) && z + 1 < p) {
+        pq.offer(list);
+      }
+      k--;
+    }
+    temp = pq.peek();
+    return Arrays.asList(a[temp.get(0)], b[temp.get(1)], c[temp.get(2)]);
+  }
+  
+  private long dist(int x, int y, int z) {
+    long res = x * x + y * y + z * z;
+    return res;
+  }
+}
