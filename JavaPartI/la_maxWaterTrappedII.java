@@ -59,3 +59,40 @@ public class Solution {
     return res;
   }
 }
+//// ------- this is way two logic
+
+public class Solution {
+  public int maxTrapped(int[][] matrix) {
+    int m = matrix.length, n = matrix[0].length;
+    Queue<Cell> pq = new PriorityQueue<>(1, new MyComparator());
+    boolean[][] visit = new boolean[m][n];
+    for (int i = 0; i < m; i++) {
+      for (int j = 0; j < n; j++) {
+        if (i == 0 || i == m - 1 || j == 0 || j == n - 1) {
+          pq.offer(new Cell(i, j, matrix[i][j]));
+          visit[i][j] = true;
+        }
+      }
+    }
+    //
+    int[] dx = {0, 0, -1, 1};
+    int[] dy = {-1, 1, 0, 0};
+    int nx, ny;
+    int res = 0;
+    while(!pq.isEmpty()) {
+      Cell temp = pq.poll();
+      int x = temp.x, y = temp.y, l = temp.l;
+      res += Math.max(l - matrix[x][y], 0);
+      visit[x][y] = true;
+      for(int k = 0; k < 4; k++) {
+        nx = x + dx[k];
+        ny = y + dy[k];
+        if (nx >= 0 && nx < m && ny >= 0 && ny < n && visit[nx][ny] == false) {
+          pq.offer(new Cell(nx, ny, Math.max(matrix[nx][ny], l)));
+          visit[nx][ny] = true;
+        }
+      }
+    }
+    return res;
+  }
+}
