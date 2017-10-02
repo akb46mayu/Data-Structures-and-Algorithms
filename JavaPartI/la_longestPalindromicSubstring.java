@@ -109,3 +109,34 @@ public class Solution {
     return s.substring(start, right + 1);
   }
 }
+/////////////////////////// way 2 dp
+
+public class Solution {
+  public String longestPalindrome(String s) {
+    int n = s.length();
+    if (n <= 1) {
+      return s;
+    }
+    String str ="";
+    int[][] pal = new int[n][n];
+    int max = 0;
+    for (int j = 0; j < n; j++) {
+      for (int i = j; i >= 0; i--) {
+         if (i == j) {
+           pal[i][j] = 1;
+         } else if (i + 1 == j) {
+           pal[i][j] = s.charAt(i) == s.charAt(j) ? 1 : 0;
+         } else {
+           if (s.charAt(i) == s.charAt(j) && pal[i + 1][j - 1] == 1) {
+             pal[i][j] = 1;
+           } 
+         }
+         if (pal[i][j] == 1 && j + 1 - i > max) {
+           str = s.substring(i, j + 1);
+           max = j + 1 - i;
+         }
+      }
+    }
+    return str;
+  }
+}
