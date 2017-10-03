@@ -77,3 +77,19 @@ public class LRUCache {
  * int param_1 = obj.get(key);
  * obj.put(key,value);
  */
+//////////////////////  (for put the logic can also be as follows:)
+
+ public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            map.get(key).val = value;
+            Node delnode = map.get(key);
+            removeNode(delnode);
+            addToHead(delnode);
+        } else {
+            Node nnode = new Node(key, value);
+            addToHead(nnode);
+        }
+        if (map.size() > cap) {
+            removeNode(tail);
+        }
+    }
