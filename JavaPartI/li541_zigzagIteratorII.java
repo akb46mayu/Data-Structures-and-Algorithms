@@ -1,43 +1,48 @@
 
 /// my sol without using java's next, hasNext
 public class ZigzagIterator2 {
-    /**
-     * @param vecs a list of 1d vectors
-     */
+    /*
+    * @param vecs: a list of 1d vectors
+    */
     int[] p;
-    int i = 0, k = 0;
-    List<ArrayList<Integer>> vecs;
-    public ZigzagIterator2(ArrayList<ArrayList<Integer>> vecs) {
-        // initialize your data structure here.
+    int j, k;
+    List<List<Integer>> vecs;
+    public ZigzagIterator2(List<List<Integer>> vecs) {
+        // do intialization if necessary
         k = vecs.size();
         p = new int[k];
+        j = 0;
         this.vecs = vecs;
+    }
+
+    /*
+     * @return: An integer
+     */
+    public int next() {
+        // write your code here
         int count = 0;
-        while (count < k && p[i % k] == vecs.get(i % k).size()) {
-            i++;
+        while(count < k && p[j % k] >= vecs.get(j % k).size()) {
+            j++;
             count++;
         }
         
+        int res = vecs.get(j % k).get(p[j % k]);
+        p[j % k]++;
+        j++;
+        return res;
     }
 
-    public int next() {
-        // Write your code here (assume the next element exist)
-        int out = vecs.get(i % k).get(p[i % k]++);
-        i++;
-        return out;
-    }
-
+    /*
+     * @return: True if has next
+     */
     public boolean hasNext() {
-        // Write your code here   
+        // write your code here
         int count = 0;
-        while (count < k) {
-            if (p[i % k] < vecs.get(i % k).size()) {
-                return true;
-            }
-            i++;
+        while(count < k && p[j % k] >= vecs.get(j % k).size()) {
+            j++;
             count++;
         }
-        return false;
+        return p[j % k] < vecs.get(j % k).size();
     }
 }
 
