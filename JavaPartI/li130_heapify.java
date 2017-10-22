@@ -23,7 +23,7 @@ public class Solution {
         if (right < n && A[minidx] > A[right]) {
             minidx = right;
         }
-        if (minidx != i) {
+        if (minidx != i) { // there is an if statement, so there will be no dead loop when the heap is a minheap already
             swap(A, i, minidx);
             percDown(A, minidx, n);
         }
