@@ -14,26 +14,30 @@ Note: you can assume that no duplicate edges will appear in edges. Since all edg
 */
 class Solution {
     public boolean validTree(int n, int[][] edges) {
-        int[] hmap = new int[n];
-        int m = edges.length;
+        int[] map = new int[n];
         for (int i = 0; i < n; i++) {
-            hmap[i] = i;
+            map[i] = i;
         }
-        for (int i = 0; i < m; i++) {
-            int x = find(edges[i][0], hmap);
-            int y = find(edges[i][1], hmap);
+        if (n - 1 != edges.length) {
+            return false;
+        }
+        for (int[] edge : edges) {
+            int x = edge[0], y = edge[1];
+            x = findParent(map, x);
+            y = findParent(map, y);
             if (x == y) {
                 return false;
             }
-            hmap[x] = y;
+            map[x] = y;
         }
-        return n - 1 == m;
+        return true;
+        
     }
     
-    private int find(int x, int[] hmap) {
-        if (x == hmap[x]) {
+    private int findParent(int[] map, int x) {
+        if (map[x] == x) {
             return x;
         }
-        return find(hmap[x], hmap);
+        return findParent(map, map[x]);
     }
 }
