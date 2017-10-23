@@ -29,32 +29,25 @@ public class Solution {
   public List<String> validParentheses(int n) {
     // Write your solution here.
     List<String> res = new ArrayList<>();
-    StringBuilder sb = new StringBuilder();
-    isParen(n, 0, 0, sb, res);
+    helper(n, new StringBuilder(), res, 0, 0);
     return res;
-    
   }
   
-  private void isParen(int n, int left, int right, StringBuilder sb, List<String> res) {
-    if (sb.length() == 2 * n) {
-       if (left * 2 == sb.length()) {
-         res.add(sb.toString());
-       }
-       return;
-    }
-    
-    if (left >= right) {
-      isParen(n, left + 1, right, sb.append('('), res);
-    } else {
+  private void helper(int n, StringBuilder sb, List<String> res, int left, int right) {
+    if (n * 2 == sb.length()) {
+      res.add(sb.toString());
       return;
     }
-    sb.deleteCharAt(sb.length() - 1);
-    if (left > right) {
-      isParen(n, left, right + 1, sb.append(')'), res);
-    } else {
-      return;
+    if (left < n) {
+      sb.append('(');
+      helper(n, sb, res, left + 1, right);
+      sb.deleteCharAt(sb.length() - 1);
     }
-    sb.deleteCharAt(sb.length() - 1);
+    if (right < left) {
+      sb.append(')');
+      helper(n, sb, res, left, right + 1);
+      sb.deleteCharAt(sb.length() - 1);
+    }
   }
-  
 }
+
