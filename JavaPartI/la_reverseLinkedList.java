@@ -21,3 +21,17 @@ public class Solution {
     return prev;
   }
 }
+
+//////////////////
+public class Solution {
+  public ListNode reverse(ListNode head) {
+    // write your solution here
+    if (head == null || head.next == null) {
+      return head;
+    }
+    ListNode nhead = reverse(head.next);
+    head.next.next = head;
+    head.next = null;
+    return nhead;
+  }
+}
