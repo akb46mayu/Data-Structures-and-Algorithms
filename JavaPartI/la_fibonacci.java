@@ -38,7 +38,7 @@ public class Solution {
     return f[K];
   }
 }
-// O(1) space
+// O(1) space (template solution)
 
 public class Solution {
   public long fibonacci(int K) {
@@ -57,4 +57,26 @@ public class Solution {
     }
     return f[K%2];
   }
+}
+// O(1) non template
+
+public class Solution {
+  public long fibonacci(int K) {
+    // Write your solution here
+    if (K <= 0) {
+      return 0;
+    } else if (K == 1) {
+      return 1;
+    } else {
+      long first = 0, second = 1;
+      long cur = 0;
+      for (int i = 2; i <= K; i++) {
+        cur = first + second;
+        first = second;
+        second = cur;
+      }
+      return cur;
+    }
+  }
+  
 }
