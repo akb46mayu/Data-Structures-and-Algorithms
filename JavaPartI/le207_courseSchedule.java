@@ -50,9 +50,7 @@ public class Solution {
                 
                 if (indegree[nbh] == 0 ) {
                     q.offer(nbh);
-                    
                 }
-                
             }
         }
         return count == numCourses;
