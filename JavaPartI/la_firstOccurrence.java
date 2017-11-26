@@ -2,7 +2,6 @@
 public class Solution {
   public int firstOccur(int[] array, int target) {
     // Write your solution here
-    
     if (array == null){
       return -1;
     }
