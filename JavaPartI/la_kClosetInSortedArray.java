@@ -92,3 +92,13 @@ for (int i = 0; i < k; i++) {
     out[i] = array[left--];
   }
 }
+
+// way 4
+for (int i = 0; i < k; i++) {
+      if (right == n || (left >= 0 && Math.abs(array[left] - target) < Math.abs(array[right] - target))) {
+        //move the left pointer
+        out[i] = array[left--];
+      } else {
+        out[i] = array[right++];
+      }
+}
