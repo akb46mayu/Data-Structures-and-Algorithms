@@ -9,30 +9,28 @@
  * }
  */
 
-public class Solution {  //different logic
+public class Solution {
   public ListNode insert(ListNode head, int value) {
     // write your solution here
     ListNode temp = new ListNode(value);
-    if (head == null || value <= head.value) {
-      temp.next = head;
+    if (head == null) {
       return temp;
     }
-    ListNode prev = head, cur = head.next;
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
+    ListNode cur = dummy, next = cur.next;
     
-    while (prev.next != null) {
-      if (temp.value <= cur.value) {
-        prev.next = temp;
-        temp.next = cur;
-        return head;
+    while(next != null) {
+      if (value <= next.value) {
+        temp.next = next;
+        cur.next = temp;
+        return dummy.next;
       }
-      prev = prev.next;
-      cur = cur.next;
+      cur = next;
+      next = cur.next;
     }
-    
-    if (temp.value > prev.value) {
-      prev.next = temp;
-    }
-    return head;
+    cur.next = temp;
+    return dummy.next;
   }
 }
 /////////////////////////////
