@@ -1,6 +1,6 @@
 """
 Implement the following operations of a queue using stacks.
-
+（assume that when there is no elements, we will not pop)
 push(x) -- Push element x to the back of queue.
 pop() -- Removes the element from in front of queue.
 peek() -- Get the front element.
@@ -12,41 +12,59 @@ You may assume that all operations are valid (for example, no pop or peek operat
 
 """
 
-class Queue(object):
+class MyQueue(object):
+
     def __init__(self):
         """
-        initialize your data structure here.
+        Initialize your data structure here.
         """
         self.s1 = []
         self.s2 = []
 
     def push(self, x):
         """
+        Push element x to the back of queue.
         :type x: int
-        :rtype: nothing
+        :rtype: void
         """
         self.s1.append(x)
 
     def pop(self):
         """
-        :rtype: nothing
-        """
-        self.peek()
-        self.s2.pop()
-            
-    def peek(self):  # this should be modified, because it does not consider about queue is None (although it passed OJ)
-        """
+        Removes the element from in front of queue and returns that element.
         :rtype: int
         """
-        if self.s2 == []:
-            while len(self.s1):
-                self.s2.append(self.s1.pop())
+        self.peek()
+        return self.s2.pop()
+            
+        
+
+    def peek(self):
+        """
+        Get the front element.
+        :rtype: int
+        """
+       
+        if len(self.s2) == 0:
+            self.move2s2()
         return self.s2[-1]
+    
+    def move2s2(self):
+        while len(self.s1) != 0:
+            self.s2.append(self.s1.pop())
+        
 
     def empty(self):
         """
+        Returns whether the queue is empty.
         :rtype: bool
         """
-        if len(self.s2) == 0 and len(self.s1)==0:
-           return True
-        return False
+        return len(self.s1) + len(self.s2) == 0
+
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()
