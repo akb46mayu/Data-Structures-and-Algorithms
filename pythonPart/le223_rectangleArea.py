@@ -8,7 +8,7 @@ Rectangle Area
 Assume that the total area is never beyond the maximum possible value of int.
 
 """
-
+# tag: math, vision
 
 class Solution(object):
     def computeArea(self, A, B, C, D, E, F, G, H):
