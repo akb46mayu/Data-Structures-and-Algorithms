@@ -11,9 +11,5 @@ class Solution(object):
       return 0
     if a == 1:
       return 1
-    if b % 2 == 1:
-      c = self.power(a, b // 2)
-      return a * c * c
-    else:
-      c = self.power(a, b // 2)
-      return c * c
+    c = self.power(a, b // 2)
+    return a * c * c if b % 2 == 1 else c * c
