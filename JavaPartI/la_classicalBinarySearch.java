@@ -1,5 +1,3 @@
-//
-
 public class Solution {
   public int binarySearch(int[] array, int target) {
     // Write your solution here.
