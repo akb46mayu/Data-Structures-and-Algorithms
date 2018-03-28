@@ -44,3 +44,30 @@ class Solution(object):
                 return self.symHelper(one.left, two. right) and self.symHelper(one.right, two.left)
             else:
                 return False
+
+            
+            
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if root is None:
+            return True
+        return self.symHelper(root.left, root.right)
+        
+    def symHelper(self, a, b):
+        if a == None and b == None:
+            return True
+        elif a == None or b == None:
+            return False
+        else:
+            return a.val == b.val and self.symHelper(a.left, b.right) and self.symHelper(a.right, b.left)
