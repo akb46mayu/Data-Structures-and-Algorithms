@@ -9,6 +9,11 @@ Some examples:
 
 """
 
+
+"""
+each element in stack are integers
+"""
+
 class Solution(object):
     def evalRPN(self, tokens):
         """
