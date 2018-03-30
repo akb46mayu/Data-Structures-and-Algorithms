@@ -14,9 +14,6 @@ class Solution(object):
         
         return results
 
-    
-    
- 
 
 class Solution2(object):  
     def subsets(self, nums):
