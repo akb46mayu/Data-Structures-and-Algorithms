@@ -40,3 +40,33 @@ class Solution(object):
                 push(i+1, 0)
             k = k - 1
         return cursmallest
+   
+   
+## solution 2 
+from heapq import heappush, heappop
+class Solution2(object):
+    def kthSmallest(self, matrix, k):
+        """
+        :type matrix: List[List[int]]
+        :type k: int
+        :rtype: int
+        """
+        if matrix is None or len(matrix) == 0:
+            return None
+        m, n = len(matrix), len(matrix[0])
+        pq = []
+        visited = [[False] * n for i in range(m)]
+        visited[0][0] = True
+        heappush(pq, (matrix[0][0], 0, 0))
+        while k > 0:
+            cur, x, y = heappop(pq)
+            dx = [0, 1]
+            dy = [1, 0]
+            for p in range(2):
+                nx = x + dx[p]
+                ny = y + dy[p]
+                if nx >= 0 and nx < m and ny >= 0 and ny < n and visited[nx][ny] == False:
+                    heappush(pq, (matrix[nx][ny], nx, ny))
+                    visited[nx][ny] = True
+            k -= 1
+        return cur
