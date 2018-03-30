@@ -31,3 +31,25 @@ class Solution(object): # use DFS implemented by recursion
         else:
             for i in range(len(nums)):
                 self.permuteHelper(results, temp+[nums[i]], nums[:i] + nums[i+1:])
+
+                
+## permutations                 
+class Solution2(object):
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        res = []
+        self.permuteHelper(nums, res, 0)
+        return res
+    
+    def permuteHelper(self, nums, res, k):
+        n = len(nums)
+        if k == n:
+            res.append(list(nums))
+            return
+        for j in range(k, n):
+            nums[k], nums[j] = nums[j], nums[k]
+            self.permuteHelper(nums, res, k + 1)
+            nums[k], nums[j] = nums[j], nums[k]
