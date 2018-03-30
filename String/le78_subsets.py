@@ -18,7 +18,7 @@ class Solution(object):
     
  
 
-class Solution2(object):
+class Solution2(object):  
     def subsets(self, nums):
         """
         :type nums: List[int]
@@ -32,7 +32,7 @@ class Solution2(object):
     def subHelper(self, nums, temp, res, level):
         n = len(nums)
         if level == n:
-            res.append(list(temp))
+            res.append(list(temp)) # when you append a list ref, do not forget to make it entity
             return
         temp.append(nums[level])
         self.subHelper(nums, temp, res, level + 1)
