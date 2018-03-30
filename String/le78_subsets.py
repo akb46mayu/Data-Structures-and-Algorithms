@@ -13,3 +13,28 @@ class Solution(object):
                 results[-1].append(nums[i])
         
         return results
+
+    
+    
+ 
+
+class Solution2(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        res = []
+        temp = []
+        self.subHelper(nums, temp, res, 0)
+        return res
+    
+    def subHelper(self, nums, temp, res, level):
+        n = len(nums)
+        if level == n:
+            res.append(list(temp))
+            return
+        temp.append(nums[level])
+        self.subHelper(nums, temp, res, level + 1)
+        temp.pop()
+        self.subHelper(nums, temp, res, level + 1)
