@@ -59,7 +59,7 @@ class Solution(object):
         return False
 
  ### way 2 according to java's ver      
- class Solution2(object):
+class Solution2(object):
     def solveNQueens(self, n):
         """
         :type n: int
@@ -67,28 +67,27 @@ class Solution(object):
         """
         res = []
         temp = []
-        self.dfs(n, res, temp)
+        self.queenHelper(res, temp, n)
         return res
-    
-    def dfs(self, n, res, temp):
-        if n == len(temp):
-            tempmatrix = []
-            for i in xrange(n):
+        
+    def queenHelper(self, res, temp, n):
+        if len(temp) == n:
+            submatrix = []
+            for i in range(n):
                 temprow = ['.'] * n
                 temprow[temp[i]] = 'Q'
-                newstr = ''.join(temprow)
-                tempmatrix.append(newstr) 
-            res.append(tempmatrix)
+                submatrix.append(''.join(temprow))
+            res.append(submatrix)
             return
-        for i in xrange(n):
-            if (not self.attack(temp, i)):
-                temp.append(i)
-                self.dfs(n, res, temp)
+        for j in range(n):
+            if self.checkAttach(temp, j) == False:
+                temp.append(j)
+                self.queenHelper(res, temp, n)
                 temp.pop()
                 
-    def attack(self, temp, j):
-        newrow = len(temp)
-        for idx, val in enumerate(temp):
-            if val == j or abs(j - val) == (newrow - idx):
-                return True
+    def checkAttach(self, temp, col1):
+        row1 = len(temp)
+        for row0, col0 in enumerate(temp):
+            if col1 == col0 or row1 - row0 == abs(col1- col0):
+                    return True
         return False
