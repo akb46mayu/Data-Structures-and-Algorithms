@@ -1,5 +1,5 @@
 from heapq import heappush, heappop
-class Element(object):
+class Element(object):  # seems like a minheap in count (when count are the same, larger alphabteic order has priority)
     def __init__(self, word, count):
         self.word = word
         self.count = count
@@ -28,5 +28,5 @@ class Solution(object):
             i += 1
         for i in range(len(pq)):
             res.append(heappop(pq)[1])
-        res.reverse()
+        res.reverse()   # can also use res[:,:,-1]
         return res
