@@ -11,7 +11,7 @@ A = [3,2,1,0,4], return false.
 """
 
 
-class Solution(object):
+class Solution(object):  # greedy T = O(1)
     def canJump(self, nums):
         """
         :type nums: List[int]
