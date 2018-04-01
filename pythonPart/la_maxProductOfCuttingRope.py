@@ -16,8 +16,8 @@ class Solution(object): # method1: left big seg, right big seg
     return M[n]
 
   
-  
-class Solution(object): # method2: left big seg, right small seg
+##################################################################
+class Solution2(object): # method2: left big seg, right small seg
   def maxProduct(self, length):
     """
     input: int length
@@ -33,3 +33,6 @@ class Solution(object): # method2: left big seg, right small seg
         r = i - l
         M[i] = max(M[i], max(l, M[l]) * r)
     return M[n]
+
+  
+  ##################################################################
