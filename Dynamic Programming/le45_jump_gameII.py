@@ -33,3 +33,23 @@ class Solution(object):
                 curReachable = reachable
             reachable = max(reachable, val+i)
         return steps
+
+    
+######## dp TLE solution    
+class Solution(object):
+    def jump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if nums is None or len(nums) <= 1:
+            return 0
+        n = len(nums)
+        dp = [0] * n
+        for j in range(1, n):
+            dp[j] = j
+            for i in range(0, j):
+                if i + nums[i] >= j:
+                    dp[j] = min(dp[j], dp[i] + 1)
+        return dp[n - 1]
+    
