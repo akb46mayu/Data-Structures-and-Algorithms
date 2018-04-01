@@ -40,3 +40,23 @@ class Solution(object):
             else:
                 reachable = max(reachable, i + val)
         return True
+    
+    
+ ### TLE problem using dp
+class Solution3(object):
+    def canJump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if nums is None or len(nums) == 0:
+            return True
+        n = len(nums)
+        dp = [False for i in range(n)]
+        dp[0] = True
+        for i in range(1, n):
+            for j in range(i):
+                if dp[j] and j + nums[j] >= i:
+                    dp[i] = True
+                    break
+        return dp[n - 1]
