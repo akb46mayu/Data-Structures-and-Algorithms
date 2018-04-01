@@ -1,4 +1,4 @@
-class Solution(object):
+class Solution(object): # method1: left big seg, right big seg
   def maxProduct(self, length):
     """
     input: int length
