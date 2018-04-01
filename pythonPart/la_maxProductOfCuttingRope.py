@@ -36,3 +36,19 @@ class Solution2(object): # method2: left big seg, right small seg
 
   
   ##################################################################
+class Solution3(object): # recursion (does not pass oj, TLE)
+  def maxProduct(self, length):
+    """
+    input: int length
+    return: int
+    """
+    # write your solution here
+
+    n = length
+    if n == 1:
+      return 1
+    res = 0
+    for l in range(1, n): # [n - 1, 0]
+        r = n - l
+        res = max(res, max(self.maxProduct(l), l) * r)
+    return res
