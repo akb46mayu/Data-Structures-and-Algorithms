@@ -1,15 +1,9 @@
-"""
-
-Implement a trie with insert, search, and startsWith methods.
-Note:
-You may assume that all inputs are consist of lowercase letters a-z.
-
-"""
-class TrieNode:
+class TrieNode(object):
     def __init__(self):
-        self.childs = {}
+        self.children = {}
         self.isWord = False
 
+        
 class Trie(object):
 
     def __init__(self):
@@ -24,15 +18,14 @@ class Trie(object):
         :type word: str
         :rtype: void
         """
-        node = self.root
-        for letter in word:
-           child = node.childs.get(letter)
-           if child is None:
-               child = TrieNode()
-               node.childs[letter] = child
-           node = child
-        child.isWord = True
-        
+        cur = self.root
+        for ch in word:
+            if ch not in cur.children:
+                cur.children[ch] = TrieNode()
+                cur = cur.children[ch]
+            else:
+                cur = cur.children[ch]
+        cur.isWord = True
 
     def search(self, word):
         """
@@ -40,13 +33,14 @@ class Trie(object):
         :type word: str
         :rtype: bool
         """
-        node = self.root
-        for letter in word:
-            if not node.childs.get(letter):
+        cur = self.root
+        for ch in word:
+            if ch in cur.children:
+                cur = cur.children[ch]
+            else:
                 return False
-            node = node.childs[letter]
-        return node.isWord
-            
+        return cur.isWord
+        
 
     def startsWith(self, prefix):
         """
@@ -54,15 +48,17 @@ class Trie(object):
         :type prefix: str
         :rtype: bool
         """
-        node = self.root
-        for letter in prefix:
-            if not node.childs.get(letter):
+        cur = self.root
+        for ch in prefix:
+            if ch in cur.children:
+                cur = cur.children[ch]
+            else:
                 return False
-            node = node.childs[letter]
         return True
+
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
 # obj.insert(word)
 # param_2 = obj.search(word)
-# param_3 = obj.startsWith(prefix) # start with means start from the root to the end of prefix
+# param_3 = obj.startsWith(prefix)
