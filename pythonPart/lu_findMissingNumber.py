@@ -1,8 +1,6 @@
 ## given sorted array, with one missing number, the first element is not missing.
 # use logn time to implement it
 
-
-
 class Solution(object):
     def missingNumber(self, nums):
         """
