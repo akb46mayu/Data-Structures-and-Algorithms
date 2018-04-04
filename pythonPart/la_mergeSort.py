@@ -1,4 +1,50 @@
+#### without return value
+
 class Solution(object):
+  def mergeSort(self, array):
+    """
+    input: int[] array
+    return: int[]
+    """
+    # write your solution here
+    
+    if array is None or len(array) == 0:
+      return array
+    copy = [0] * len(array)
+    self.mergeHelper(array, copy, 0, len(array) - 1)
+    return array
+  
+  def mergeHelper(self, array, copy, i, j):
+    if i == j:
+      return
+    m = i + (j - i) // 2
+    self.mergeHelper(array, copy, i, m)
+    self.mergeHelper(array, copy, m + 1, j)
+    self.merge(array, copy, i, m, j)
+    
+    
+  def merge(self, array, helper, left, m, right):
+    for i in range(left, right + 1):
+      helper[i] = array[i]
+    i = left
+    j = m + 1
+    k = left
+    while i <= m and j <= right:
+      if helper[i] < helper[j]:
+        array[k] = helper[i]
+        i += 1
+      else:
+        array[k] = helper[j]
+        j += 1
+      k += 1
+    while i <= m:
+      array[k] = helper[i]
+      k += 1
+      i += 1
+
+
+### with return value
+class Solution(object):  
   def mergeSort(self, array):
     """
     input: int[] array
