@@ -10,7 +10,7 @@ class Solution(object):
       return array
     i = 1
     for j in range(1, len(array)):
-      if array[j] == array[j - 1]:
+      if array[j] == array[j - 1]:  # it can also be array[j] == array[i - 1]
         pass
       else: 
         array[i] = array[j]
