@@ -22,3 +22,20 @@ class Solution(object):
             prev = cur
             cur = temp
         return prev
+
+    
+class Solution2(object):
+  def reverse(self, head):
+    """
+    input: ListNode head
+    return: ListNode
+    """
+    # write your solution here
+
+    if head is None or head.next is None:
+      return head
+    
+    temp = self.reverse(head.next)
+    head.next.next = head
+    head.next = None
+    return temp
