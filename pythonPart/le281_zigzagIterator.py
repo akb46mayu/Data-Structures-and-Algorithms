@@ -1,3 +1,4 @@
+# without using python iterator next or iter
 class ZigzagIterator(object):
     def __init__(self, v1, v2):
         """
