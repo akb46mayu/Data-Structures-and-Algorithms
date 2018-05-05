@@ -38,6 +38,29 @@ class Solution(object):
                 return False
         return True
   
+####
+from collections import Counter
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+
+        if len(s) != len(t):
+            return False
+        mdict = Counter(s)
+        for ch in t:
+            if ch not in mdict:
+                return False
+            else:
+                mdict[ch] -= 1
+                if mdict[ch] < 0:
+                    return False
+        return True
+    
+###    
 class Solution2(object):
     def isAnagram(self, s, t):
         """
