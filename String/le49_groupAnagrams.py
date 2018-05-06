@@ -29,3 +29,24 @@ class Solution(object):
         for k in dict:
             out.append(dict[k])
         return out
+
+      
+####
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        res = []
+        mdict = {}
+        for str in strs:
+            ele = ''.join(sorted(list(str)))
+            if ele not in mdict:
+                mdict[ele] = []
+                mdict[ele].append(str)
+            else:
+                mdict[ele].append(str)
+        for k in mdict.keys():
+            res.append(mdict[k])
+        return res
